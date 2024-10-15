@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8">
+  <title>SitoCurriculum</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://sdk.scdn.co/spotify-player.js"></script>
+  <script>
+
+window.onSpotifyWebPlaybackSDKReady = () => {
+    const token = 'BQD5I1eDomB_p8IWwLTSMBsFfLetQVObTQwjMGufk9CiQiNXnc0R79fXeHeu2LbfFrvp1wUFJh1AGskapeOUalStl3ZgO4bkOIP6-3SH1qmMuCpcx9dVru3ml5HDwWuj6kzdSvSlLLzwdVwQon5bNv6ZBbvh6wLm7n8pp9AGrswj4lECzIk5TIeAjRP7NnD84bl3usB2enb9cPDIAEHVR-QfetZvRRdZmJu8Z3Qq';
+    const player = new Spotify.Player({
+      name: 'Web Playback SDK Quick Start Player',
+      getOAuthToken: cb => { cb(token); },
+      volume: 0.5
+    });
+
+    player.addListener('ready', ({ device_id }) => {
+    console.log('Ready with Device ID', device_id);
+  });
+
+  // Not Ready
+  player.addListener('not_ready', ({ device_id }) => {
+    console.log('Device ID has gone offline', device_id);
+  });
+
+  player.addListener('initialization_error', ({ message }) => {
+      console.error(message);
+  });
+
+  player.addListener('authentication_error', ({ message }) => {
+      console.error(message);
+  });
+
+  player.addListener('account_error', ({ message }) => {
+      console.error(message);
+  });
+
+  document.getElementById('togglePlay').onclick = function() {
+              player.togglePlay();
+            };
+
+
+  player.connect();
+
+
+  }
+    </script>
+</head>
+<body>
+  <app-root></app-root>
+</body>
+</html>

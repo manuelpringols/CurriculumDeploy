@@ -1,0 +1,336 @@
+<!-- src/app/app.component.html -->
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">Il Mio Portfolio</div>
+  <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
+  <iframe
+  title="Spotify Embed: Recommendation Playlist "
+  src="https://open.spotify.com/embed/playlist/32PxgMvUxrKixd4STHbdg7?utm_source=generator&theme=0"
+  width="30%"
+
+  frameBorder="0"
+  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+  loading="lazy">
+  
+</iframe>
+
+
+
+
+
+  <ul class="nav-links">
+    <li></li>
+    <li><a href="#chi-sono">Chi Sono</a></li>
+    <li><a href="#competenze">Competenze</a></li>
+    <li><a href="#progetti">Progetti</a></li>
+    <li><a href="#esperienza">Esperienza</a></li>
+    <li><a href="#contatti">Contatti</a></li>
+
+ 
+  </ul>
+</nav>
+
+<!-- Main Section -->
+<section  ngxScrollReveal="{
+  origin: 'bottom',
+  distance: '50px',
+  duration: 1000,
+  reset: false
+}"class="main-content">
+  <video autoplay loop muted class="background-video">
+    <source src="https://cdn.pixabay.com/video/2024/06/12/216463_large.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+  <div class="content">
+    <div class="bio">
+      <h1>Ciao, Sono Manuel Cerqua</h1>
+      <p>Backend Developer con esperienza in Spring Boot e Angular.</p>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- Placeholder for other sections -->
+
+
+<!-- src/app/app.component.html -->
+<!-- src/app/app.component.html -->
+<section   [@fadeIn]="state" class="card-container">
+  <div class="card chi-sono" (click)="scrollToSection('chi-sono')">
+    <h2>Chi Sono</h2>
+    <p>Scopri di più su di me, la mia formazione e le esperienze che mi hanno portato ad avvicinarmi al mondo dello sviluppo software.</p>
+  </div>
+  <div class="card competenze" (click)="scrollToSection('competenze')">
+    <h2>Competenze</h2>
+    <p>Dai un'occhiata alle mie competenze principali in Spring Boot e Angular, i framework con cui costruisco applicazioni scalabili e performanti.</p>
+  </div>
+  <div class="card progetti" (click)="scrollToSection('progetti')">
+    <h2>Progetti</h2>
+    <p>Esplora i progetti a cui sto lavorando, come PinGo, un'app mobile di geolocalizzazione, e il CRM che gestisce le nostre attività di sviluppo.</p>
+  </div>
+  <div class="card esperienza" (click)="scrollToSection('esperienza')">
+    <h2>Esperienza</h2>
+    <p>Esplora i progetti a cui sto lavorando, come PinGo, un'app mobile di geolocalizzazione, e il CRM che gestisce le nostre attività di sviluppo.</p>
+  </div>
+  <div class="card contatti" (click)="scrollToSection('contatti')">
+    <h2>Contatti</h2>
+    <p>Sei interessato a collaborare o vuoi discutere di opportunità? Trova i miei contatti qui per LinkedIn, GitHub e email.</p>
+  </div>
+</section>
+
+<section   [@fadeIn]="state" id="chi-sono" class="section">
+  <div class="container">
+    <div class="profile-header">
+      <h2 class="section-title">Chi Sono</h2>
+      <p class="intro-text">
+        Sono Manuel Cerqua, un giovane appassionato con diversi anni di esperienza nel settore. Dedito al lavoro e con un forte desiderio di apprendere, ho sviluppato solide competenze in programmazione e ottimizzazione dei processi produttivi.
+      </p>
+    </div>
+    <div class="profile-content">
+      <div class="profile-item">
+        <h3><i class="fas fa-id-badge"></i> Dettagli Personali</h3>
+        <ul class="info-list">
+          <li><strong>Telefono:</strong> 347-4895-348</li>
+          <li><strong>Email:</strong> manuelpringols&#64;gmail.com</li>
+          <li><strong>Indirizzo:</strong> Via Innamorati 109, Giugliano (NA)</li>
+        </ul>
+      </div>
+      <div class="profile-item">
+        <h3><i class="fas fa-graduation-cap"></i> Istruzione</h3>
+        <p>Diploma di Perito Industriale presso ITS Galvani, Giugliano (NA), 2015 - 2020</p>
+      </div>
+      <div class="profile-item">
+        <h3><i class="fas fa-briefcase"></i> Esperienza Lavorativa</h3>
+        <p>
+          Operaio Specializzato presso Acciai Inox Srl, Giugliano (NA) dal 2019.
+          Programmazione e utilizzo di macchine CNC per la lavorazione dell'acciaio inox.
+          Collaboro con il team per ottimizzare i processi produttivi.
+        </p>
+      </div>
+      <div class="profile-item">
+        <h3><i class="fas fa-tools"></i> Competenze Tecniche</h3>
+        <ul class="skills-list">
+          <li>Java, SQL, JavaScript, CSS, HTML</li>
+          <li>Spring Boot, Angular</li>
+          <li>Git</li>
+          <li>Sviluppo di API REST</li>
+          <li>Creazione e gestione di applicazioni web front-end e back-end</li>
+        </ul>
+      </div>
+      <div class="profile-item">
+        <h3><i class="fas fa-certificate"></i> Certificazioni</h3>
+        <p>Attestato Java Oracle: Java Foundations Associate</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <section   [@fadeIn]="state" id="competenze" class="section">
+    <div class="container">
+      <h2 class="section-title">Competenze</h2>
+      <p class="intro-text">
+        Sono particolarmente ferrato nell'implementazione di **API REST** utilizzando **Spring Boot** e nell’uso dei concetti fondamentali di **Angular** per lo sviluppo di interfacce front-end. Amo costruire applicazioni che siano scalabili, performanti e che abbiano una struttura pulita e ben organizzata.
+      </p>
+      <div class="skills-content">
+        <div class="skill-item">
+          <h3><i class="fas fa-leaf"></i> Spring Boot</h3>
+          <p>
+            Ho esperienza nell'utilizzo di Spring Boot per lo sviluppo di servizi RESTful, nella gestione di routing, e nell'integrazione con database tramite JPA. Conosco le principali funzionalità del framework, tra cui:
+          </p>
+          <ul class="skill-list">
+            <li>Creazione di API REST</li>
+            <li>Gestione dei controller e routing</li>
+            <li>Integrazione con database (Spring Data JPA)</li>
+            <li>Configurazione di sicurezza base con Spring Security</li>
+            <li>Utilizzo di DevTools per un rapido sviluppo</li>
+          </ul>
+        </div>
+  
+        <div class="skill-item">
+          <h3><i class="fab fa-angular"></i> Angular</h3>
+          <p>
+            Angular è il mio framework preferito per la gestione della parte front-end. Mi sento a mio agio nell'uso dei concetti base e nella creazione di componenti dinamici e modulari. Le mie competenze includono:
+          </p>
+          <ul class="skill-list">
+            <li>Creazione di componenti e direttive</li>
+            <li>Utilizzo dei moduli e gestione del routing</li>
+            <li>Gestione dei servizi e comunicazione HTTP</li>
+            <li>Implementazione della reattività con RxJS</li>
+            <li>Stilizzazione con CSS e Angular Material</li>
+           
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section [@fadeIn]="state" id="auth" class="section">
+    <p class="intro-text">
+      Per poter visionare l'area progetti, ho strutturato una piccola autenticazione con JWT token. 
+      Ho ideato un modulo di autenticazione che, una volta compilato con le credenziali corrette, mostrerà un token JWT. 
+      Questo token dovrà essere incollato nel modulo di registrazione per accedere a determinate funzionalità. 
+      In questo modo, il sistema dimostra come l'autenticazione e l'autorizzazione possano funzionare a livello teorico di backend.
+    </p>
+  
+    <!-- Pulsante per scorrere verso la sezione app-backend -->
+    <button (click)="scrollToBackend()" >Autenticazione</button>
+  
+    
+  </section>
+  
+  
+  
+  
+
+
+  <!-- progetti.component.html -->
+<!-- progetti.component.html -->
+
+
+
+
+<section [ngStyle]="{ filter: isAuthenticated ? 'none' : 'blur(15px)' }" id="progetti" class="section">
+  <div>
+    <div class="container">
+      <h2 class="section-title">Progetti</h2>
+      <p class="intro-text">
+        Anche se non ho ancora portato a termine progetti completi utilizzabili pubblicamente, sto lavorando su alcuni progetti personali che rappresentano le mie competenze e la mia passione per lo sviluppo. Ecco i principali su cui sto concentrando le mie energie.
+      </p>
+
+      <div class="project">
+        <h3><i class="fas fa-mobile-alt"></i> PinGo</h3>
+        <p>
+          <strong>PinGo</strong> è un'app per dispositivi mobili a cui sto lavorando da circa un anno con alcuni amici. Il progetto è realizzato utilizzando **Ionic**, un framework che trasforma il codice Angular e HTML in linguaggio nativo (Java/Kotlin) per Android Studio. L'obiettivo di PinGo è fornire una soluzione di geolocalizzazione che consenta agli utenti di creare, condividere e visualizzare punti d'interesse sulla mappa, creando una community attiva e partecipativa.
+        </p>
+        <div class="screenshot-container">
+          <img src="assets/1.jpg" alt="Screenshot 1 di PinGo" class="screenshot">
+          <img src="assets/5.jpg" alt="Screenshot 2 di PinGo" class="screenshot">
+          <img src="assets/3.jpg" alt="Screenshot 3 di PinGo" class="screenshot">
+        </div>
+
+       
+        <p class="project-status">
+          
+          <strong>Stato del Progetto:</strong> In fase di sviluppo.
+        </p>
+
+        
+      </div>
+
+      <div class="project">
+        <h3><i class="fas fa-tasks"></i> CRM per PinGo</h3>
+        <p>
+          Questo è un progetto interno, nato dall’esigenza di gestire meglio le attività e le task del team che lavora su PinGo. Ho realizzato una sorta di **CRM** utilizzando tecnologie di front-end e back-end per monitorare le attività in corso, le task completate e quelle da assegnare. Questo strumento ci permette di mantenere una visione chiara sullo stato dei lavori e migliorare la produttività.
+        </p>
+        <div class="screenshot-container2">
+          <img src="assets/pingoDashboard1.png" alt="Screenshot 1 di PinGoDashboard" class="screenshot">
+          <img src="assets/pingoDashboard2.png" alt="Screenshot 2 di PinGoDashboard" class="screenshot">
+          <img src="assets/pingoDashboard3.png" alt="Screenshot 3 di PinGoDashboard" class="screenshot">
+        </div>
+        <p class="project-status">
+          <strong>Stato del Progetto:</strong> In utilizzo nel team, ma ancora in fase di sviluppo per miglioramenti futuri.
+        </p>
+      </div>
+
+      <!-- Overlay per la finta autenticazione -->
+     
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<!-- NgForHttp
+
+  <section   [@fadeIn]="state" id="progetti" class="section">
+    <div  class="container">
+      <h2 class="section-title">Progetti</h2>
+      <p class="intro-text">
+        Anche se non ho ancora portato a termine progetti completi utilizzabili pubblicamente, sto lavorando su alcuni progetti personali che rappresentano le mie competenze e la mia passione per lo sviluppo. Ecco i principali su cui sto concentrando le mie energie.
+      </p>
+  
+      <div *ngFor="let project of projectInformation" class="project">
+        <h3><i class="fas fa-mobile-alt"></i> {{project.title}}</h3>
+        <p>
+          
+          <strong>{{project.title}}</strong> {{project.description}}
+        <div class="screenshot-container">
+          <img src="assets/1.jpg" alt="Screenshot 1 di PinGo" class="screenshot">
+          <img src="assets/5.jpg" alt="Screenshot 2 di PinGo" class="screenshot">
+          <img src="assets/3.jpg" alt="Screenshot 3 di PinGo" class="screenshot">
+        </div>
+        <p class="project-status">
+          <strong>Stato del Progetto:</strong> In fase di sviluppo.
+        </p>
+      </div>
+  
+     
+  
+    </div>
+  </section>
+  -->
+  
+
+
+  <section  [@fadeIn] id="esperienza" class="section">
+    <div class="container">
+      <h2 class="section-title">Esperienza Lavorativa</h2>
+      <p class="intro-text">
+        Anche se non ho ancora maturato esperienze professionali dirette nel settore IT, la mia determinazione e la passione per il mondo dello sviluppo mi hanno spinto a lavorare costantemente su progetti personali per accrescere le mie competenze. Sono convinto che la mia motivazione e la capacità di apprendere rapidamente mi rendano pronto a mettere in pratica ciò che ho studiato e ad affrontare qualsiasi sfida professionale inerente alle tecnologie che padroneggio.
+      </p>
+      <div class="experience-content">
+        <div class="experience-item">
+          <h3><i class="fas fa-tools"></i> Progetti Personali</h3>
+          <p>
+            Durante gli ultimi anni, ho dedicato il mio tempo libero allo sviluppo di progetti personali, tra cui la creazione di un'applicazione mobile e di un sistema CRM. Questi progetti mi hanno permesso di acquisire esperienza pratica e comprendere le dinamiche di sviluppo in team e la gestione dei workflow.
+          </p>
+        </div>
+        <div class="experience-item">
+          <h3><i class="fas fa-graduation-cap"></i> Formazione Autodidatta</h3>
+          <p>
+            Ho investito in formazione personale attraverso corsi online e tutorial, ampliando le mie competenze in linguaggi come **Java**, **JavaScript**, e tecnologie come **Spring Boot** e **Angular**. Questa dedizione mi ha fornito una solida base tecnica e la capacità di adattarmi rapidamente a nuovi ambienti lavorativi.
+          </p>
+        </div>
+        <div class="experience-item">
+          <h3><i class="fas fa-rocket"></i> Pronto ad Accettare Nuove Sfide</h3>
+          <p>
+            Sono pronto ad accettare qualsiasi opportunità nel mondo dello sviluppo software che mi permetta di crescere e applicare le mie conoscenze. Nonostante la mancanza di esperienza diretta, la mia caparbietà, unita alla curiosità e all'intraprendenza, mi rendono entusiasta e motivato a iniziare un percorso professionale in questo campo.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+<section  [@fadeIn] id="contatti" class="section">
+  <div class="container">
+    <h2 class="section-title">Contatti</h2>
+    <p class="intro-text">
+      Se desideri metterti in contatto con me, sono sempre aperto a nuove opportunità e collaborazioni. Puoi trovarmi su LinkedIn e GitHub o inviarmi un'email per discutere di progetti e idee.
+    </p>
+    <div class="contact-links">
+      <a href="mailto:manuelpringols@gmail.com" class="contact-item">
+        <i class="fas fa-envelope"></i> Email
+      </a>
+      <a href="https://www.linkedin.com/in/manuel-cerqua-66ab54273/" class="contact-item" target="_blank">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+      <a href="https://github.com/manuelpringols" class="contact-item" target="_blank">
+        <i class="fab fa-github"></i> GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<app-backend (authStatus)="onAuthStatusChange($event)" id="app-backend"></app-backend>
+
+
+
+<router-outlet></router-outlet>

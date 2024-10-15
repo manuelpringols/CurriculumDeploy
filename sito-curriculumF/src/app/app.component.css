@@ -1,0 +1,316 @@
+.chi-sono {
+    background-image: url('https://images.unsplash.com/photo-1590907047706-ee9c08cf3189?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');  /* Sostituisci con URL reale */
+}
+
+.competenze {
+    background-image: url('https://images.unsplash.com/photo-1484589065579-248aad0d8b13?q=80&w=1959&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');  /* Stelle e spazio */
+}
+
+.progetti {
+    background-image: url('https://plus.unsplash.com/premium_photo-1666901328578-7fcbe821735e?q=80&w=2127&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');  /* Galassie luminose */
+}
+
+.esperienza {
+    background-image: url('https://images.unsplash.com/photo-1532798369041-b33eb576ef16?q=80&w=1965&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');  /* Nebulosa elegante */
+}
+
+.contatti {
+    background-image: url('https://images.unsplash.com/photo-1446941611757-91d2c3bd3d45?q=80&w=2002&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');  /* Costellazione */
+}
+
+@keyframes slide {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(50px);
+    }
+}
+
+video {
+
+
+}
+
+iframe{
+    position: relative;
+   top: 5vh;
+}
+
+.navbar{
+height: 10vh;
+display: flex;
+align-items:center ;
+
+}
+
+.section-title {
+    font-size: 2.5em;
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #4ca1af;
+    display: inline-block;
+}
+
+.intro-text {
+    font-size: 1.2em;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto 40px auto;
+    line-height: 1.6;
+}
+
+/* Profilo e dettagli */
+.profile-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.profile-item {
+    background: #34495e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 1px 4px 15px rgba(48, 5, 88, 0.445);
+    transition: transform 0.3s ease;
+    z-index: 2;
+}
+
+.profile-item h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.profile-item i {
+    margin-right: 10px;
+    color: #4ca1af;
+}
+
+.profile-item:hover {
+    transform: translateY(-5px);
+    cursor: cell;
+}
+
+/* Liste ordinate */
+.info-list,
+.skills-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-list li,
+.skills-list li {
+    padding: 5px 0;
+    font-size: 1.1em;
+}
+
+/* Icone animate */
+.profile-item h3 i {
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+section::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/stardust.png');
+    opacity: 0.8; /* Regola l'opacità per renderlo più discreto */
+    z-index: 1;
+    animation: moveStars 60s linear infinite; /* Applica l'animazione */
+}
+
+@keyframes moveStars {
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: 200% -200%; /* Sposta le stelle verso l'alto a destra */
+    }
+}
+
+.skill-item {
+    background: #34495e;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    margin-bottom: 5vh;
+}
+
+.skill-item h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.skill-item i {
+    margin-right: 10px;
+    color: #4ca1af;
+}
+
+.skill-item:hover {
+    transform: translateY(-5px);
+}
+
+/* Liste ordinate delle competenze */
+.skill-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.skill-list li {
+    margin-bottom: 40px;
+    border-radius: 0.5vw;
+    padding: 0.3vw;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.project h3 {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+}
+
+.project p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.project i {
+    margin-right: 10px;
+    color: #4ca1af;
+}
+
+/* Contenitore per gli screenshot */
+.screenshot-container {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    z-index: 100;
+}
+
+.screenshot-container2 {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px 0;
+    z-index: 100;
+}
+
+.screenshot {
+    width: 30%;
+    height: 65vh;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    z-index: 100;
+}
+
+.screenshot:hover {
+    transform: translateY(-5px);
+}
+
+/* Stato del Progetto */
+.project-status {
+    font-weight: bold;
+    text-align: center;
+    background: #2c3e50;
+    padding: 10px;
+    border-radius: 5px;
+    color: #4ca1af;
+    display: inline-block;
+}
+
+.project:hover {
+}
+
+.contact-links {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    z-index: 2;
+}
+
+.contact-links:hover {
+    cursor: pointer;
+}
+
+.contact-item {
+    background: #4ca1af;
+    color: #fff;
+    padding: 15px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-decoration: none;
+    font-size: 1.1em;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.contact-item i {
+    margin-right: 10px;
+}
+
+.contact-item:hover {
+    background: #2c3e50;
+    transform: translateY(-5px);
+}
+
+.contact-item:active {
+    transform: translateY(0);
+}
+
+.experience-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* Card di esperienza singola */
+.experience-item {
+    background: #34495e;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.experience-item h3 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.experience-item i {
+    margin-right: 10px;
+    color: #4ca1af;
+}
+
+.experience-item p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+.experience-item:hover {
+    transform: translateY(-5px);
+}
+
+#auth button{
+    position: relative;
+    right: 50vw; /* Puoi anche provare a cambiare in absolute se necessario */
+    top: 20vh;
+    z-index: 10; /* Assicurati che il pulsante sia sopra gli altri elementi */
+    padding: 10px 20px; /* Aggiungi padding per rendere il pulsante più grande */
+    background-color: #007BFF; /* Colore di sfondo per il pulsante */
+    color: white; /* Colore del testo */
+    border: none; /* Rimuovi il bordo predefinito */
+    border-radius: 5px; /* Angoli arrotondati */
+    cursor: pointer; /* Cambia il cursore per indicare che è cliccabile */
+}

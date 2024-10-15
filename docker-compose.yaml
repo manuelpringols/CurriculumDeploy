@@ -1,0 +1,39 @@
+version: '3.9'
+
+services:
+  postgresql:
+    image: bitnami/postgresql:16
+    environment:
+      POSTGRESQL_DATABASE: ${POSTGRESQL_DATABASE}
+      POSTGRESQL_USERNAME: ${POSTGRESQL_USERNAME}
+      POSTGRESQL_PASSWORD: ${POSTGRESQL_PASSWORD}
+      POSTGRESQL_POSTGRES_PASSWORD: ${POSTGRESQL_POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
+    volumes:
+      - pingoDbV:/bitnami/postgresql
+
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgresql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgresql:5432/${POSTGRESQL_DATABASE}
+      SPRING_DATASOURCE_USERNAME: ${POSTGRESQL_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${POSTGRESQL_PASSWORD}
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  pingoDbV:
+
