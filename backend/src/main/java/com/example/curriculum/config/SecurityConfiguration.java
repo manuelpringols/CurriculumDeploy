@@ -38,7 +38,7 @@ public class SecurityConfiguration {
 	        .disable()
 	        .authorizeHttpRequests()
 	        //.requestMatchers("/api/auth/register","/swagger-ui","/v3/api-docs","/swagger-resources","/swagger-resources")
-	        .requestMatchers("/api/auth/**")
+	        .requestMatchers("/api/**")
 	        .permitAll() // Permette l'accesso non autenticato a questo endpoint
 	        .anyRequest()
 	        .authenticated() // Richiede autenticazione per tutte le altre richieste
