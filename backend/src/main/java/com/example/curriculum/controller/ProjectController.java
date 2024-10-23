@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import com.example.curriculum.services.ProjectService;
 import com.example.curriculum.entity.Project;
+import org.springframework.http.MediaType;
 
 
 @RestController()
