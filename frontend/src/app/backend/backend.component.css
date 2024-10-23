@@ -2,6 +2,7 @@
 #backend-section {
   padding: 50px 0;
   position: relative; /* Necessario per il posizionamento assoluto del pseudo-elemento */
+z-index: 2;
 }
 
 section::before {
@@ -11,7 +12,7 @@ section::before {
   height: 100%;
   background: url('https://www.transparenttextures.com/patterns/stardust.png');
   opacity: 0.8; /* Regola l'opacità per renderlo più discreto */
-  z-index: 0;
+  z-index: -1;
   animation: moveStars 60s linear infinite; /* Applica l'animazione */
 }
 
@@ -28,6 +29,7 @@ section::before {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+
 }
 
 #backend-section h2 {
@@ -324,3 +326,4 @@ pre {
       max-width: 90%;
   }
 }
+
