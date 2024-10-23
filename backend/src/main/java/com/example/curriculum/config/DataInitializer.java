@@ -37,13 +37,13 @@ public class DataInitializer implements CommandLineRunner{
 	        
 	        Project project1 = new Project();
             project1.setProjectName("PinGo");
-            project1.setProjectDescription("PinGo è un'app per dispositivi mobili a cui sto lavorando da circa un anno con alcuni amici. Il progetto è realizzato utilizzando **Ionic**, un framework che trasforma il codice Angular e HTML in linguaggio nativo (Java/Kotlin) per Android Studio. L'obiettivo di PinGo è fornire una soluzione di geolocalizzazione che consenta agli utenti di creare, condividere e visualizzare punti d'interesse sulla mappa, creando una community attiva e partecipativa. ");
+            project1.setProjectDescription("PinGo è un'app per dispositivi mobili a cui sto lavorando da circa un anno con alcuni amici. Il progetto è realizzato utilizzando Ionic, un framework che trasforma il codice Angular e HTML in linguaggio nativo (Java/Kotlin) per Android Studio. L'obiettivo di PinGo è fornire una soluzione di geolocalizzazione che consenta agli utenti di creare, condividere e visualizzare punti d'interesse sulla mappa, creando una community attiva e partecipativa. ");
             projectRepository.save(project1);
             projectRepository.flush(); // Forza il salvataggio
 
             Project project2 = new Project();
             project2.setProjectName("CRM per PinGo");
-            project2.setProjectDescription(" Questo è un progetto interno, nato dall’esigenza di gestire meglio le attività e le task del team che lavora su PinGo. Ho realizzato una sorta di **CRM** utilizzando tecnologie di front-end e back-end per monitorare le attività in corso, le task completate e quelle da assegnare. Questo strumento ci permette di mantenere una visione chiara sullo stato dei lavori e migliorare la produttività. ");
+            project2.setProjectDescription(" Questo è un progetto interno, nato dall’esigenza di gestire meglio le attività e le task del team che lavora su PinGo. Ho realizzato una sorta di CRM utilizzando tecnologie di front-end e back-end per monitorare le attività in corso, le task completate e quelle da assegnare. Questo strumento ci permette di mantenere una visione chiara sullo stato dei lavori e migliorare la produttività. ");
             projectRepository.save(project2);
             projectRepository.flush(); // Forza il salvataggio
 	    }
