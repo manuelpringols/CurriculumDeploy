@@ -1,167 +1,175 @@
+/* Sezione Backend */
 #backend-section {
-    padding: 50px 0;
-  }
+  padding: 50px 0;
+  position: relative; /* Necessario per il posizionamento assoluto del pseudo-elemento */
+}
 
-  section::before{
- 
-    content: "";
-    position: absolute;
-
-    width: 100%;
-    height: 100%;
-    background: url('https://www.transparenttextures.com/patterns/stardust.png');
-    opacity: 0.8; /* Regola l'opacità per renderlo più discreto */
-    z-index: 0;
-    animation: moveStars 60s linear infinite; /* Applica l'animazione */
+section::before {
+  content: "";
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  background: url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity: 0.8; /* Regola l'opacità per renderlo più discreto */
+  z-index: 0;
+  animation: moveStars 60s linear infinite; /* Applica l'animazione */
 }
 
 @keyframes moveStars {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 200% -200%; /* Sposta le stelle verso l'alto a destra */
-    }
-}
-  
-  #backend-section .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+  0% {
+      background-position: 0 0;
   }
-  
-  #backend-section h2 {
-    font-size: 2.5em;
-    color: #9b8686;
-    text-align: center;
-    margin-bottom: 30px;
+  100% {
+      background-position: 200% -200%; /* Sposta le stelle verso l'alto a destra */
   }
-  
-  #backend-section .section-content {
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-  }
-  
-  #backend-section h3 {
-    font-size: 1.8em;
-    color: #962121;
-    margin-top: 20px;
-  }
-  
-  #backend-section p {
-    font-size: 1.2em;
-    color: #9c9a9a;
-    line-height: 1.6;
-  }
-  
-  #backend-section pre {
-    background-color: #272822;
-    color: #f8f8f2;
-    padding: 15px;
-    border-radius: 5px;
-    overflow-x: auto;
-    margin-top: 10px;
-  }
-  
-  #backend-section pre code {
-    font-family: 'Courier New', Courier, monospace;
-    font-size: 1em;
-    white-space: pre-wrap;
-  }
-
-  .toggle-button {
-    position: relative; /* Puoi anche provare a cambiare in absolute se necessario */
-    z-index: 10; /* Assicurati che il pulsante sia sopra gli altri elementi */
-    padding: 10px 20px; /* Aggiungi padding per rendere il pulsante più grande */
-    background-color: #007BFF; /* Colore di sfondo per il pulsante */
-    color: white; /* Colore del testo */
-    border: none; /* Rimuovi il bordo predefinito */
-    border-radius: 5px; /* Angoli arrotondati */
-    cursor: pointer; /* Cambia il cursore per indicare che è cliccabile */
-}
-  
-  .toggle-button:hover {
-    background-color: #0056b3; /* Colore di sfondo al passaggio del mouse */
 }
 
+#backend-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#backend-section h2 {
+  font-size: 2.5em;
+  color: #9b8686;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+#backend-section .section-content {
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  background-color: rgba(75, 75, 75, 0.103); /* Sfondo leggermente bianco per contrastare */
+}
+
+#backend-section h3 {
+  font-size: 1.8em;
+  color: #962121;
+  margin-top: 20px;
+}
+
+#backend-section p {
+  font-size: 1.2em;
+  color: #9c9a9a;
+  line-height: 1.6;
+}
+
+/* Stili per il codice */
+#backend-section pre {
+  background-color: #272822;
+  color: #f8f8f2;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+  margin-top: 10px;
+}
+
+#backend-section pre code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1em;
+  white-space: pre-wrap;
+}
+
+/* Pulsanti Toggle */
+.toggle-button {
+  position: relative; /* Puoi anche provare a cambiare in absolute se necessario */
+  z-index: 10; /* Assicurati che il pulsante sia sopra gli altri elementi */
+  padding: 10px 20px; /* Aggiungi padding per rendere il pulsante più grande */
+  background-color: #007BFF; /* Colore di sfondo per il pulsante */
+  color: white; /* Colore del testo */
+  border: none; /* Rimuovi il bordo predefinito */
+  border-radius: 5px; /* Angoli arrotondati */
+  cursor: pointer; /* Cambia il cursore per indicare che è cliccabile */
+}
+
+.toggle-button:hover {
+  background-color: #0056b3; /* Colore di sfondo al passaggio del mouse */
+}
+
+/* Stili per gli heading */
 h2, h3, h4 {
-    color: #333; /* Colore del testo degli heading */
+  color: #333; /* Colore del testo degli heading */
 }
 
+/* Margini e padding generali */
 .section-content {
-    margin-top: 20px; /* Margine superiore per separare le sezioni */
+  margin-top: 20px; /* Margine superiore per separare le sezioni */
 }
 
 p {
-    color: #666; /* Colore del testo dei paragrafi */
-    line-height: 1.6; /* Altezza della linea per una migliore leggibilità */
+  color: #666; /* Colore del testo dei paragrafi */
+  line-height: 1.6; /* Altezza della linea per una migliore leggibilità */
 }
 
+/* Stili per le liste */
 ul {
-    margin: 10px 0; /* Margine per la lista */
-    padding-left: 20px; /* Padding sinistro per la lista */
+  margin: 10px 0; /* Margine per la lista */
+  padding-left: 20px; /* Padding sinistro per la lista */
 }
 
+/* Stili per i form */
 form {
-    margin: 20px 0; /* Margine superiore e inferiore per i moduli */
-    display: flex; /* Layout flessibile per il modulo */
-    flex-direction: column; /* Disposizione verticale degli elementi del modulo */
+  margin: 20px 0; /* Margine superiore e inferiore per i moduli */
+  display: flex; /* Layout flessibile per il modulo */
+  flex-direction: column; /* Disposizione verticale degli elementi del modulo */
 }
 
-
-
+/* Input */
 input[type="email"], input[type="password"] {
-    color: #0056b3;
-    position: relative;
-    padding: 10px; /* Padding interno per gli input */
-    margin-bottom: 10px; /* Margine inferiore per separare gli input */
-    border: 1px solid #ccc; /* Bordo degli input */
-    border-radius: 4px; /* Angoli arrotondati per gli input */
-    font-size: 16px; /* Dimensione del font per gli input */
-    background-color: #962121;
+  color: #0056b3;
+  position: relative;
+  padding: 10px; /* Padding interno per gli input */
+  margin-bottom: 10px; /* Margine inferiore per separare gli input */
+  border: 1px solid #ccc; /* Bordo degli input */
+  border-radius: 4px; /* Angoli arrotondati per gli input */
+  font-size: 16px; /* Dimensione del font per gli input */
+  background-color: #962121;
 }
 
+/* Pulsante generale */
 button {
-    position: relative;
-    padding: 10px; /* Padding interno per il pulsante */
-    border: none; /* Rimuovi il bordo predefinito */
-    border-radius: 4px; /* Angoli arrotondati per il pulsante */
-    background-color: #007bff; /* Colore di sfondo del pulsante */
-    color: white; /* Colore del testo del pulsante */
-    font-size: 16px; /* Dimensione del font per il pulsante */
-    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
-    transition: background-color 0.3s; /* Transizione per il cambio di colore */
-    z-index: 100;
+  position: relative;
+  padding: 10px; /* Padding interno per il pulsante */
+  border: none; /* Rimuovi il bordo predefinito */
+  border-radius: 4px; /* Angoli arrotondati per il pulsante */
+  background-color: #007bff; /* Colore di sfondo del pulsante */
+  color: white; /* Colore del testo del pulsante */
+  font-size: 16px; /* Dimensione del font per il pulsante */
+  cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+  transition: background-color 0.3s; /* Transizione per il cambio di colore */
+  z-index: 100;
 }
 
 button:hover {
-    background-color: #0056b3; /* Colore di sfondo del pulsante al passaggio del mouse */
+  background-color: #0056b3; /* Colore di sfondo del pulsante al passaggio del mouse */
 }
 
+/* Pulsante di toggle */
 .toggle-button {
-    background-color: transparent; /* Colore di sfondo trasparente per il pulsante di toggle */
-    border: none; /* Rimuovi il bordo predefinito */
-    color: #007bff; /* Colore del testo del pulsante di toggle */
-    cursor: pointer; /* Cambia il cursore al passaggio del mouse */
-    margin: 10px 0; /* Margine per il pulsante di toggle */
-    font-size: 16px; /* Dimensione del font per il pulsante di toggle */
+  background-color: transparent; /* Colore di sfondo trasparente per il pulsante di toggle */
+  border: none; /* Rimuovi il bordo predefinito */
+  color: #007bff; /* Colore del testo del pulsante di toggle */
+  cursor: pointer; /* Cambia il cursore al passaggio del mouse */
+  margin: 10px 0; /* Margine per il pulsante di toggle */
+  font-size: 16px; /* Dimensione del font per il pulsante di toggle */
 }
 
+/* Container per il codice */
 .code-container {
-    /* Colore di sfondo per la sezione del codice */
-    padding: 15px; /* Padding interno per la sezione del codice */
-    border-radius: 4px; /* Angoli arrotondati per la sezione del codice */
-    overflow-x: auto; /* Abilita lo scorrimento orizzontale per il codice lungo */
+  padding: 15px; /* Padding interno per la sezione del codice */
+  border-radius: 4px; /* Angoli arrotondati per la sezione del codice */
+  overflow-x: auto; /* Abilita lo scorrimento orizzontale per il codice lungo */
 }
 
 pre {
-    white-space: pre-wrap; /* Mantieni la formattazione del codice */
-    word-wrap: break-word; /* Rendi il testo a capo se troppo lungo */
-    margin: 0; /* Rimuovi margini predefiniti */
+  white-space: pre-wrap; /* Mantieni la formattazione del codice */
+  word-wrap: break-word; /* Rendi il testo a capo se troppo lungo */
+  margin: 0; /* Rimuovi margini predefiniti */
 }
 
-
+/* Sezione JWT */
 #jwt-section .container {
   text-align: left;
   padding: 20px;
@@ -178,9 +186,12 @@ pre {
 .section-content p {
   font-size: 1em;
   line-height: 1.6;
-  color: #555;
+  text-shadow:1px 1px #000000;
+
+  color:white;
 }
 
+/* Stili per le immagini */
 .image-container {
   margin-top: 20px;
   text-align: center;
@@ -197,120 +208,119 @@ pre {
   margin-top: 5px;
 }
 
+/* Sezione di disclaimer */
 #disclaimer-section {
-    background-color: #f9f9f9;
-    padding: 40px 20px;
-    border-radius: 10px;
-    margin-top: 50px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 40px 20px;
+  border-radius: 10px;
+  margin-top: 50px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #disclaimer-section .container {
-    max-width: 800px;
-    margin: auto;
-    text-align: center;
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
 }
 
 #disclaimer-section h2 {
-    color: #ff0000a4;
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-
-#disclaimer-section p {
-    color: #4b4a4a;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 20px;
-}
-
-#disclaimer-section ul {
-    text-align: left;
-    padding-left: 20px;
-    margin-bottom: 20px;
-}
-
-#disclaimer-section ul li {
-    color: #333;
-    font-size: 16px;
-    margin-bottom: 10px;
-}
-
-#disclaimer-section .final-note,
-#disclaimer-section .final-call {
-    color: #333;
-    font-size: 1.5rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-#disclaimer-section strong {
-    color: #000;
-}
-
-#disclaimer-section a {
-    color: #1e90ff;
-    text-decoration: none;
-}
-
-#disclaimer-section a:hover {
-    text-decoration: underline;
-}
-
-#disclaimer-section {
-  background-color: #e2e2e2d7;
-  padding: 40px;
-  border-radius: 8px;
-  box-shadow: 0px 1px 14px 12px rgba(115, 255, 0, 0.37);
-  text-align: center;
-  margin: 40px 0;
-}
-
-.disclaimer-container {
-  max-width: 800px;
-  margin: 0 auto;
-}
-
-.disclaimer-title {
-  font-size: 2.5rem;
-  color: #2c3e50;
-  font-weight: bold;
+  color: #ff0000a4;
+  font-size: 3rem;
   margin-bottom: 20px;
 }
 
-.disclaimer-text {
-  font-size: 1.9rem;
-  color: #34495e;
+#disclaimer-section p {
+  color: #4b4a4a;
+  font-size: 1.rem;
   line-height: 1.6;
   margin-bottom: 20px;
 }
 
-.disclaimer-note {
-  background-color: #f3fae0;
-  padding: 20px;
-  border-radius: 5px;
-  font-size: 1.9rem;
-  color: #00796b;
+#disclaimer-section ul {
+  text-align: left;
+  padding-left: 20px;
+  margin-bottom: 20px;
 }
 
-.disclaimer-note p {
-  margin: 0;
-  font-weight: 600;
+#disclaimer-section ul li {
+  color: #333;
+  font-size: 16px;
+  margin-bottom: 10px;
 }
 
-.info-message div{
-  display:flex ;
-  align-items: center;
-  margin-bottom: 3vw;
-
-
+#disclaimer-section .final-note,
+#disclaimer-section .final-call {
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
 }
 
-.info-message span{
-  width: fit-content;
-  box-shadow: 1px 1px 10px 5px rgba(30, 182, 88, 0.329);
-  border-radius: 1vw;
-  padding: 0.5vw;
-  margin-left: 1vw;
-  
+#disclaimer-section strong {
+  color: #7103d8;
+  text-shadow:1px 1px #000000;
+}
+
+#disclaimer-section a {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+#disclaimer-section a:hover {
+  text-decoration: underline;
+}
+
+/* Sezione disclaimer principale */
+#disclaimer-section {
+  padding: 40px;
+  border-radius: 8px;
+  margin-top: 40px;
+  background-color: #003b49e3;
+}
+
+#disclaimer-section h2 {
+  color: #962121;
+  font-size: 2rem;
+}
+
+#disclaimer-section p {
+  font-size: 1.3rem;
+  color: #d4d4d4d7;
+}
+
+#disclaimer-section ul {
+  list-style-type: disc;
+  padding-left: 20px;
+}
+
+#disclaimer-section li {
+  margin-bottom: 10px;
+}
+
+/* Responsività */
+@media (max-width: 768px) {
+  #backend-section h2 {
+      font-size: 2em;
+  }
+
+  #backend-section h3 {
+      font-size: 1.5em;
+  }
+
+  #backend-section p {
+      font-size: 1em;
+  }
+
+  /* Modifica degli stili dei pulsanti per i dispositivi mobili */
+  .toggle-button {
+      font-size: 14px; /* Dimensione del font per i pulsanti di toggle sui dispositivi mobili */
+  }
+
+  button {
+      font-size: 14px; /* Dimensione del font per i pulsanti sui dispositivi mobili */
+  }
+
+  /* Modifica della dimensione delle immagini per i dispositivi mobili */
+  .image-container img {
+      max-width: 90%;
+  }
 }

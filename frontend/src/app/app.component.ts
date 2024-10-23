@@ -19,6 +19,9 @@ import { HttpService } from './servizi/http.service';
   ]
 })
 export class AppComponent {
+toggleMenu() {
+  this.menuOpen = !this.menuOpen;
+}
 username: any;
 password: any;
 
@@ -34,9 +37,12 @@ constructor(private spotifyService: SpotifyService, @Inject(PLATFORM_ID) private
 minHeight: any;
 trackId = '7H7NyZ3G075GqPx2evsfeb';
 
-projectInformation:any;
+projectInformation1:any;
+
+projectInformation2:any;
 
 
+menuOpen = false;
 
 onAuthStatusChange(authStatus: boolean) {
   this.isAuthenticated = authStatus; // Qui authStatus deve essere un booleano
@@ -62,7 +68,7 @@ scrollToBackend() {
 
   
   ngOnInit(){
-    this.getProjectDescription()
+    this.getProjectDescription1()
   }
 
   ngAfterViewInit(){
@@ -88,10 +94,21 @@ scrollToBackend() {
     }
   }
 
-  getProjectDescription(){
+  getProjectDescription1(){
+    this.http.getProjectDescription(1).subscribe((dati: any) => {
+      console.log('dati ricevuti', dati);
+      this.projectInformation1 = dati
+
+      });
+   
+   
+  }
+
+
+  getProjectDescription2(){
     this.http.getProjectDescription(2).subscribe((dati: any) => {
       console.log('dati ricevuti', dati);
-      this.projectInformation = dati
+      this.projectInformation2 = dati
 
       });
    

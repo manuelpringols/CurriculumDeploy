@@ -2,33 +2,27 @@
 <!-- Navbar -->
 <nav class="navbar">
   <div class="logo">Il Mio Portfolio</div>
+  <div class="navbar-toggle" (click)="toggleMenu()">☰</div> <!-- Menu toggle -->
   <script src="https://open.spotify.com/embed/iframe-api/v1" async></script>
   <iframe
-  title="Spotify Embed: Recommendation Playlist "
-  src="https://open.spotify.com/embed/playlist/32PxgMvUxrKixd4STHbdg7?utm_source=generator&theme=0"
-  width="30%"
+    title="Spotify Embed: Recommendation Playlist"
+    src="https://open.spotify.com/embed/playlist/32PxgMvUxrKixd4STHbdg7?utm_source=generator&theme=0"
+    width="30%"
+    frameBorder="0"
+    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+    loading="lazy">
+  </iframe>
 
-  frameBorder="0"
-  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-  loading="lazy">
-  
-</iframe>
-
-
-
-
-
-  <ul class="nav-links">
+  <ul [class.active]="menuOpen" class="nav-links">
     <li></li>
     <li><a href="#chi-sono">Chi Sono</a></li>
     <li><a href="#competenze">Competenze</a></li>
     <li><a href="#progetti">Progetti</a></li>
     <li><a href="#esperienza">Esperienza</a></li>
     <li><a href="#contatti">Contatti</a></li>
-
- 
   </ul>
 </nav>
+
 
 <!-- Main Section -->
 <section  ngxScrollReveal="{
@@ -120,7 +114,11 @@
       </div>
       <div class="profile-item">
         <h3><i class="fas fa-certificate"></i> Certificazioni</h3>
+
         <p>Attestato Java Oracle: Java Foundations Associate</p>
+        <a  href="https://catalog-education.oracle.com/pls/certview/sharebadge?id=A2FBED630A7E46814AD9FBE303DC7211989ACA0673B63338D53B74385543699C" target="_blank" rel="noopener noreferrer">
+          <img style="width: 13vw; position: relative; left: 0px; box-shadow: 1px 1px 7px 6px #444; border-radius: 0.7vw;" src="https://brm-workforce.oracle.com/pdf/certview/images/JAVA8OJA.png" alt="Certificazione Java 8">
+      </a>
       </div>
     </div>
   </div>
@@ -200,10 +198,9 @@
 
       <div class="project">
         <h3><i class="fas fa-mobile-alt"></i> PinGo</h3>
-          <h3>A Marioooooo</h3>
         <p>
           
-          <strong>PinGo</strong>{{projectInformation}} 
+          <strong>PinGo</strong>{{projectInformation1}} 
         </p>
         <div class="screenshot-container">
           <img src="assets/1.jpg" alt="Screenshot 1 di PinGo" class="screenshot">
@@ -223,7 +220,7 @@
       <div class="project">
         <h3><i class="fas fa-tasks"></i> CRM per PinGo</h3>
         <p>
-          Questo è un progetto interno, nato dall’esigenza di gestire meglio le attività e le task del team che lavora su PinGo. Ho realizzato una sorta di **CRM** utilizzando tecnologie di front-end e back-end per monitorare le attività in corso, le task completate e quelle da assegnare. Questo strumento ci permette di mantenere una visione chiara sullo stato dei lavori e migliorare la produttività.
+          {{projectInformation2}}
         </p>
         <div class="screenshot-container2">
           <img src="assets/pingoDashboard1.png" alt="Screenshot 1 di PinGoDashboard" class="screenshot">
