@@ -26,9 +26,7 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${POSTGRESQL_PASSWORD}
 
   frontend:
-    build:
-      context: ./frontend
-      dockerfile: Dockerfile
+    image: curriculum_fe:2.0
     ports:
       - "80:80"
     depends_on:
@@ -36,4 +34,5 @@ services:
 
 volumes:
   pingoDbV:
+
 
