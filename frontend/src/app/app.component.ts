@@ -34,7 +34,7 @@ constructor(private spotifyService: SpotifyService, @Inject(PLATFORM_ID) private
 minHeight: any;
 trackId = '7H7NyZ3G075GqPx2evsfeb';
 
-projectInformation:any;
+projectInformation:any  = {}
 
 
 
@@ -91,6 +91,8 @@ scrollToBackend() {
   getProjectDescription(){
       this.http.getProjectDescription(2).subscribe((data)=>{
         console.log(data)
+        this.projectInformation = data;
+        console.log(this.projectInformation)
       })
   }
 
