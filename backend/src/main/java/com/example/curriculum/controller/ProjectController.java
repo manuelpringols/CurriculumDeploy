@@ -30,12 +30,12 @@ public class ProjectController {
 		
 	}
 	
-	@GetMapping(value = "/getDescription/{id}", produces = "application/json")
+	@GetMapping(value = "/getDescription/{id}")
 	public ResponseEntity<Project> getProjectDescription(@PathVariable Integer id){
 		
 		String projectDescription = this.projectService.getProjectDescription(id);
 		
-		return new ResponseEntity<>(projectDescription,HttpStatus.OK);
+		return new ResponseEntity(projectDescription,HttpStatus.OK);
 		
 		
 	}

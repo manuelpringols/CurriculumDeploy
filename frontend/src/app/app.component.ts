@@ -34,7 +34,7 @@ constructor(private spotifyService: SpotifyService, @Inject(PLATFORM_ID) private
 minHeight: any;
 trackId = '7H7NyZ3G075GqPx2evsfeb';
 
-projectInformation:any  = {}
+projectInformation:any;
 
 
 
