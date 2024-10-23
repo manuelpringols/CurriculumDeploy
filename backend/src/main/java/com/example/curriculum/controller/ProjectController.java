@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import com.example.curriculum.services.ProjectService;
+import com.example.curriculum.entity.Project;
+
 
 @RestController()
 @RequestMapping("/api/project")
@@ -18,22 +20,22 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 	
-	@GetMapping(value = "/getName/{id}", produces = "application/json")
-	public ResponseEntity<?> getProjectName(@PathVariable Integer id){
+	@GetMapping("/getName/{id}")
+	public ResponseEntity<Project> getProjectName(@PathVariable Integer id){
 		
 		String projectName = this.projectService.getProjectName(id);
 		
-		return new ResponseEntity(projectName,HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 		
 		
 	}
 	
 	@GetMapping(value = "/getDescription/{id}", produces = "application/json")
-	public ResponseEntity<?> getProjectDescription(@PathVariable Integer id){
+	public ResponseEntity<Project> getProjectDescription(@PathVariable Integer id){
 		
 		String projectDescription = this.projectService.getProjectDescription(id);
 		
-		return new ResponseEntity(projectDescription,HttpStatus.OK);
+		return new ResponseEntity<>(HttpStatus.OK);
 		
 		
 	}
