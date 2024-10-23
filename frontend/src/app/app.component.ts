@@ -90,8 +90,7 @@ scrollToBackend() {
 
   getProjectDescription(){
       this.http.getProjectDescription(2).subscribe((data)=>{
-        this.projectInformation = data
-        console.log(this.projectInformation)
+        console.log(data)
       })
   }
 
