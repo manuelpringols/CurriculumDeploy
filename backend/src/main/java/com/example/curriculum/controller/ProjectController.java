@@ -23,7 +23,7 @@ public class ProjectController {
 		
 		String projectName = this.projectService.getProjectName(id);
 		
-		return new ResponseEntity<>(projectName,HttpStatus.OK);
+		return new ResponseEntity(projectName,HttpStatus.OK);
 		
 		
 	}
@@ -33,7 +33,7 @@ public class ProjectController {
 		
 		String projectDescription = this.projectService.getProjectDescription(id);
 		
-		return new ResponseEntity<>(projectDescription,HttpStatus.OK);
+		return new ResponseEntity(projectDescription,HttpStatus.OK);
 		
 		
 	}
