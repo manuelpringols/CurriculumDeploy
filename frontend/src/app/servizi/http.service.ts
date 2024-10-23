@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class HttpService {
 
 
-  apiUrl=""
+  apiUrl="http://188.245.185.96:8080/api/project"
 
 
 
@@ -16,10 +16,14 @@ export class HttpService {
     
    }
 
-   getProjectInformation(){
-   return this.http.get(`${this.apiUrl}/project`)
-
+   getProjectDescription(id:number){
+   return this.http.get(`${this.apiUrl}/getDescription/${id}`)
    }
+
+
+   getProjectTitle(id:number){
+    return this.http.get(`${this.apiUrl}/getTitle/${id}`)
+    }
 
 
 
