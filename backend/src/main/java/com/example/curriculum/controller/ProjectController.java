@@ -20,12 +20,12 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 	
-	@GetMapping("/getName/{id}")
+		@GetMapping("/getName/{id}")
 	public ResponseEntity<Project> getProjectName(@PathVariable Integer id){
 		
 		String projectName = this.projectService.getProjectName(id);
 		
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity(projectName,HttpStatus.OK);
 		
 		
 	}
@@ -35,7 +35,7 @@ public class ProjectController {
 		
 		String projectDescription = this.projectService.getProjectDescription(id);
 		
-		return new ResponseEntity<>(HttpStatus.OK);
+		return new ResponseEntity<>(projectDescription,HttpStatus.OK);
 		
 		
 	}
