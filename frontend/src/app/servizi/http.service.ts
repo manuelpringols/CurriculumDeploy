@@ -17,12 +17,12 @@ export class HttpService {
    }
 
    getProjectDescription(id:number){
-   return this.http.get(`${this.apiUrl}/getDescription/${id}`)
+   return this.http.get(`${this.apiUrl}/getDescription/${id} ` ,{ responseType: 'text' })
    }
 
 
    getProjectTitle(id:number){
-    return this.http.get(`${this.apiUrl}/getTitle/${id}`)
+    return this.http.get(`${this.apiUrl}/getTitle/${id}`, { responseType: 'text' })
     }
 
 
