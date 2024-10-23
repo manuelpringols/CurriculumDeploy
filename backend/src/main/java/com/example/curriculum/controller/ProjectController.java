@@ -30,14 +30,12 @@ public class ProjectController {
 		
 	}
 	
-	@GetMapping(value = "/getDescription/{id}")
-	public ResponseEntity<Project> getProjectDescription(@PathVariable Integer id){
-		
-		String projectDescription = this.projectService.getProjectDescription(id);
-		
-		return new ResponseEntity(projectDescription,HttpStatus.OK);
-		
-		
-	}
+	@GetMapping("/getDescription/{id}")
+public ResponseEntity<String> getProjectDescription(@PathVariable Integer id) {
+    String projectDescription = this.projectService.getProjectDescription(id);
+    return ResponseEntity.ok()
+            .contentType(MediaType.TEXT_PLAIN) // Specifica che la risposta è di tipo 'text/plain'
+            .body(projectDescription);
+}
 
 }
