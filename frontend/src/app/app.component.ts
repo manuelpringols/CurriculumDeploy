@@ -89,12 +89,19 @@ scrollToBackend() {
   }
 
   getProjectDescription(){
-      this.http.getProjectDescription(2).subscribe((data)=>{
-        console.log(data)
-        this.projectInformation = data;
-        console.log(this.projectInformation)
-      })
+    this.http.getProjectDescription(2).subscribe((dati: any) => {
+      console.log('dati ricevuti', dati);
+      this.projectInformation = Object.keys(dati).map((key) => {
+        console.log('dati mappati', dati);
+        return dati[key];
+
+      });
+   
+    });
   }
+
+
+ 
 
 
 
