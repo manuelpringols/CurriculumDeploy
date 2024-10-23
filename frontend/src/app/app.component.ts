@@ -91,13 +91,11 @@ scrollToBackend() {
   getProjectDescription(){
     this.http.getProjectDescription(2).subscribe((dati: any) => {
       console.log('dati ricevuti', dati);
-      this.projectInformation = Object.keys(dati).map((key) => {
-        console.log('dati mappati', dati);
-        return dati[key];
+      this.projectInformation = dati
 
       });
    
-    });
+   
   }
 
 
