@@ -18,12 +18,12 @@ export class HttpService {
    }
 
    getProjectDescription(id:number):Observable<any>{
-   return this.http.get(`${this.apiUrl}/getDescription/${id} ` )
+   return this.http.get<string>(`${this.apiUrl}/getDescription/${id} `, )
    }
 
 
    getProjectTitle(id:number){
-    return this.http.get(`${this.apiUrl}/getTitle/${id}`)
+    return this.http.get<string>(`${this.apiUrl}/getTitle/${id}`)
     }
 
 
