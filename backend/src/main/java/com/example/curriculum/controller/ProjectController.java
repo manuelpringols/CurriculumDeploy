@@ -17,7 +17,7 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 	
-	@GetMapping("/getName/{id}")
+	@GetMapping("/getName/{id}",produces = "application/json")
 	public ResponseEntity<?> getProjectName(@PathVariable Integer id){
 		
 		String projectName = this.projectService.getProjectName(id);
@@ -27,7 +27,7 @@ public class ProjectController {
 		
 	}
 	
-	@GetMapping("/getDescription/{id}")
+	@GetMapping("/getDescription/{id}",produces = "application/json")
 	public ResponseEntity<?> getProjectDescription(@PathVariable Integer id){
 		
 		String projectDescription = this.projectService.getProjectDescription(id);
