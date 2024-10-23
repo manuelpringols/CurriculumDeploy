@@ -12,6 +12,7 @@ import com.example.curriculum.services.ProjectService;
 
 @RestController()
 @RequestMapping("/api/project")
+@CrossOrigin(origins = "*")
 public class ProjectController {
 	
 	@Autowired
