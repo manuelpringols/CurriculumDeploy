@@ -59,8 +59,8 @@ public class ProjectController {
                 .orElseThrow(() -> new NoSuchElementException("Progetto non trovato con ID: " + projectId));
 
             // Se il progetto esiste, recupera il nome
-            String projectName = this.projectService.getProjectName(projectId);
-            return new ResponseEntity<>(projectName, HttpStatus.OK);
+            String projectDescription = this.projectService.getProjectDescription(projectId);
+            return new ResponseEntity<>(projectDescription, HttpStatus.OK);
 
         } 
         catch (NoSuchElementException e) {
