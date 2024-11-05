@@ -1,5 +1,5 @@
 # Usa l'immagine node per la build
-FROM node:latest as build
+FROM node:18 as build
 
 # Imposta la directory di lavoro
 WORKDIR /app
@@ -35,3 +35,5 @@ COPY --chown=1001:1001 --from=build /app/dist/sito_curriculum/* /opt/bitnami/apa
 #COPY --chown=1001:1001 certss /opt/bitnami/apache/conf/bitnami/certs
 COPY --chown=1001:1001 config/bitnami.conf /opt/bitnami/apache/conf/bitnami
 COPY --chown=1001:1001 config/httpd.conf /opt/bitnami/apache/conf
+
+
