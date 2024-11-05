@@ -34,7 +34,7 @@ public class ProjectController {
         try {
             // Verifica se il progetto esiste e recupera la descrizione
             projectRepository.findById(projectId)
-                .map(Project::getProjectDescription)
+                .map(Project::getProjectName)
                 .orElseThrow(() -> new NoSuchElementException("Project not found for ID: " + projectId));
 
             // Se il progetto esiste, recupera il nome
@@ -51,14 +51,23 @@ public class ProjectController {
     }
 
     @GetMapping("/getDescription/{id}")
-    public ResponseEntity<String> getProjectDescription(@PathVariable Integer id) {
-        try {
-            String projectDescription = this.projectService.getProjectDescription(id);
-            return ResponseEntity.ok()
-                    .contentType(MediaType.TEXT_PLAIN)
-                    .body(projectDescription);
-        } catch (Exception e) {
-            logger.error("Errore nel recupero della descrizione del progetto per ID: {}", id, e);
+    public ResponseEntity<String> getProjectDescription(@PathVariable Integer projectId) {
+         try {
+            // Verifica se il progetto esiste e recupera la descrizione
+            projectRepository.findById(projectId)
+                .map(Project::getProjectDescription)
+                .orElseThrow(() -> new NoSuchElementException("Progetto non trovato con ID: " + projectId));
+
+            // Se il progetto esiste, recupera il nome
+            String projectName = this.projectService.getProjectName(projectId);
+            return new ResponseEntity<>(projectName, HttpStatus.OK);
+
+        } 
+        catch (NoSuchElementException e) {
+            logger.error("Progetto non trovato per ID: {}", projectId, e);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }   catch (Exception e) {
+            logger.error("Errore nel recupero della descrizione del progetto per ID: {}", projectId, e);
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
