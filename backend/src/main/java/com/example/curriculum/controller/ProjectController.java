@@ -50,7 +50,7 @@ public class ProjectController {
         }
     }
 
-    @GetMapping("/getDescription/{id}")
+    @GetMapping("/getDescription/{projectId}")
     public ResponseEntity<String> getProjectDescription(@PathVariable Integer projectId) {
          try {
             // Verifica se il progetto esiste e recupera la descrizione
