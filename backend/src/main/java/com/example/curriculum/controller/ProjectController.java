@@ -29,47 +29,45 @@ public class ProjectController {
     @Autowired
     private ProjectRepository projectRepository;
 
-    @GetMapping("/getName/{projectId}")
-    public ResponseEntity<String> getProjectName(@PathVariable Integer projectId) {
-        try {
-            // Verifica se il progetto esiste e recupera la descrizione
-            projectRepository.findById(projectId)
-                .map(Project::getProjectName)
-                .orElseThrow(() -> new NoSuchElementException("Project not found for ID: " + projectId));
+   @GetMapping("/getName/{projectId}")
+public ResponseEntity<String> getProjectName(@PathVariable Integer projectId) {
+    try {
+        // Verifica se il progetto esiste e recupera la descrizione
+        projectRepository.findById(projectId)
+            .map(Project::getProjectName)
+            .orElseThrow(() -> new NoSuchElementException("Project not found for ID: " + projectId));
 
-            // Se il progetto esiste, recupera il nome
-            String projectName = this.projectService.getProjectName(projectId);
-            return new ResponseEntity<>(projectName, HttpStatus.OK);
+        // Se il progetto esiste, recupera il nome
+        String projectName = this.projectService.getProjectName(projectId);
+        return new ResponseEntity<>(projectName, HttpStatus.OK);
 
-        } catch (NoSuchElementException e) {
-            logger.error("Progetto non trovato per ID: {}", projectId, e);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        } catch (Exception e) {
-            logger.error("Errore nel recupero del nome del progetto per ID: {}", projectId, e);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    } catch (NoSuchElementException e) {
+        logger.error("Progetto non trovato per ID: {}", projectId, e);
+        return new ResponseEntity<>("Progetto non trovato per ID: " + projectId, HttpStatus.NOT_FOUND);
+    } catch (Exception e) {
+        logger.error("Errore nel recupero del nome del progetto per ID: {}", projectId, e);
+        return new ResponseEntity<>("Errore nel recupero del nome del progetto. Si prega di riprovare più tardi.", HttpStatus.INTERNAL_SERVER_ERROR);
     }
+}
 
-    @GetMapping("/getDescription/{projectId}")
-    public ResponseEntity<String> getProjectDescription(@PathVariable Integer projectId) {
-         try {
-            // Verifica se il progetto esiste e recupera la descrizione
-            projectRepository.findById(projectId)
-                .map(Project::getProjectDescription)
-                .orElseThrow(() -> new NoSuchElementException("Progetto non trovato con ID: " + projectId));
+@GetMapping("/getDescription/{projectId}")
+public ResponseEntity<String> getProjectDescription(@PathVariable Integer projectId) {
+    try {
+        // Verifica se il progetto esiste e recupera la descrizione
+        projectRepository.findById(projectId)
+            .map(Project::getProjectDescription)
+            .orElseThrow(() -> new NoSuchElementException("Progetto non trovato con ID: " + projectId));
 
-            // Se il progetto esiste, recupera il nome
-            String projectDescription = this.projectService.getProjectDescription(projectId);
-            return new ResponseEntity<>(projectDescription, HttpStatus.OK);
+        // Se il progetto esiste, recupera la descrizione
+        String projectDescription = this.projectService.getProjectDescription(projectId);
+        return new ResponseEntity<>(projectDescription, HttpStatus.OK);
 
-        } 
-        catch (NoSuchElementException e) {
-            logger.error("Progetto non trovato per ID: {}", projectId, e);
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }   catch (Exception e) {
-            logger.error("Errore nel recupero della descrizione del progetto per ID: {}", projectId, e);
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    } catch (NoSuchElementException e) {
+        logger.error("Progetto non trovato per ID: {}", projectId, e);
+        return new ResponseEntity<>("Progetto non trovato per ID: " + projectId, HttpStatus.NOT_FOUND);
+    } catch (Exception e) {
+        logger.error("Errore nel recupero della descrizione del progetto per ID: {}", projectId, e);
+        return new ResponseEntity<>("Errore nel recupero della descrizione del progetto. Si prega di riprovare più tardi.", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
 
