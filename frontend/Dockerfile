@@ -35,3 +35,5 @@ COPY --chown=1001:1001 --from=build /app/dist/sito_curriculum/* /opt/bitnami/apa
 #COPY --chown=1001:1001 certss /opt/bitnami/apache/conf/bitnami/certs
 COPY --chown=1001:1001 config/bitnami.conf /opt/bitnami/apache/conf/bitnami
 COPY --chown=1001:1001 config/httpd.conf /opt/bitnami/apache/conf
+
+
