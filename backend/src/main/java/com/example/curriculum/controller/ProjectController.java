@@ -70,4 +70,4 @@ public ResponseEntity<String> getProjectDescription(@PathVariable Integer projec
         return new ResponseEntity<>("Errore nel recupero della descrizione del progetto. Si prega di riprovare più tardi.", HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
-
+}
