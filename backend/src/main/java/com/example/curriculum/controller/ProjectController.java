@@ -34,7 +34,7 @@ public class ProjectController {
         try {
             // Verifica se il progetto esiste e recupera la descrizione
             projectRepository.findById(projectId)
-                .map(Project::getDescription)
+                .map(Project::getProjectDescription)
                 .orElseThrow(() -> new NoSuchElementException("Project not found for ID: " + projectId));
 
             // Se il progetto esiste, recupera il nome
