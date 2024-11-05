@@ -68,7 +68,8 @@ scrollToBackend() {
 
   
   ngOnInit(){
-    this.getProjectDescription1()
+    this.getProjectDescription1();
+    this.getProjectDescription2();
   }
 
   ngAfterViewInit(){

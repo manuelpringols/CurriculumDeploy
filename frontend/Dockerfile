@@ -1,5 +1,5 @@
 # Usa l'immagine node per la build
-FROM node:latest as build
+FROM node:18 as build
 
 # Imposta la directory di lavoro
 WORKDIR /app
@@ -8,7 +8,7 @@ WORKDIR /app
 COPY package*.json ./
 
 # Installa le dipendenze senza interazioni di rete non necessarie
-RUN npm install --legacy-peer-deps
+RUN npm install --legacy-peer-deps --verbose
 
 # Copia il resto dei file sorgenti nel container
 COPY . .
