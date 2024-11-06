@@ -11,7 +11,7 @@ import com.example.curriculum.repository.UserRepository;
 
 
 @Component
-public class DataInitializer implements CommandLineRunner{
+public class DataInitializer {
 	
 	
 	    @Autowired
