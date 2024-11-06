@@ -19,7 +19,7 @@ public class DataInitializer implements CommandLineRunner{
 
 	    @Autowired
 	    private ProjectRepository projectRepository;
-
+/*
 	    @Override
 	    public void run(String... args) throws Exception {
 	        // Verifica se l'utente esiste già
@@ -48,5 +48,7 @@ public class DataInitializer implements CommandLineRunner{
              // Forza il salvataggio
 	    }
 	    }
+	    
+	    */
 
 }
