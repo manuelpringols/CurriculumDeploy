@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class HttpService {
 
 
-  apiUrl="http://188.245.185.96:8080/api/project"
+  apiUrl="https://manuelpringols.info/api/project"
 
 
 
