@@ -83,40 +83,36 @@
 
             <h3>4. Connessione al Database</h3>
             <p>
-                Il backend è collegato a un database MySQL. La configurazione di base è gestita tramite il file <code>application.properties</code>:
+                Il backend è collegato a un database PostgresSQL. La configurazione di base è gestita tramite il file <code>application.properties</code>, questo riportato, è un esempio utilizzando i parametri in chiaro: 
+                 <br><u style="font-style: italic;">Ps. In un ambiente di produzione, si utilizzano variabili d'ambiente .env per evitare di hardcodare informazioni sensibili come in questo caso</u>
             </p>
             <pre><code>
-spring.datasource.url=jdbc:postgresql://localhost:5432/sito-curriculum
-spring.datasource.username=root
-spring.datasource.password=password
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.properties.hibernate.default_schema=public
-spring.jpa.show-sql=true
+spring.datasource.url=jdbc:postgresql://localhost:5432/sito-curriculum #Stringa di collegamento al db
+spring.datasource.username=root  
+spring.datasource.password=password #Parametri di connessione hardcodati
+spring.jpa.hibernate.ddl-auto=update #Configurazioni di spring boot
+spring.jpa.properties.hibernate.default_schema=public #Configurazioni di spring boot
+spring.jpa.show-sql=true #Configurazioni di spring boot
             </code></pre>
 
             <!-- Sezione per la visualizzazione dei progetti -->
         
             <section id="disclaimer-section">
                 <div class="container">
-                    <h2>Disclaimer: Un Sito, Molte Possibilità 🚀</h2>
-
-
-                    <p>
-                        <strong>È importante segnalare che il sito non utilizza HTTPS.</strong> Tuttavia, poiché non gestisce credenziali sensibili o dati riservati, l'assenza di questa funzionalità di sicurezza è accettabile per gli scopi dell'applicazione. L'intera applicazione è progettata per essere semplice ed efficace, consentendo una navigazione fluida e intuitiva.
-                    </p>
-                    <p>
-                        <strong>Questo progetto è attualmente deployato su un server Hetzner</strong>. Puoi vedere l'applicazione in azione direttamente dalla barra degli indirizzi, dove è possibile notare che il backend è attivo e funzionante.
-                    </p>
-                    <p>
-                        L'intera area "Progetti" è costruita su chiamate API al backend realizzato in Spring Boot. Ogni progetto viene caricato dinamicamente attraverso queste interazioni, offrendo un'esperienza fluida e reattiva. 
-                    </p>
+                    <h2>Disclaimer: Un Sito Sicuro e Gestito Manualmente 🚀</h2>
             
                     <p>
-                        Sebbene l'applicazione presenti funzionalità moderne, alla base è molto semplice. Questo progetto dimostra chiaramente le potenzialità di una soluzione full-stack, dove frontend e backend collaborano per fornire un'esperienza utente efficace.
+                        <strong>Questo sito è sicuro e utilizza HTTPS</strong>, garantendo che tutte le comunicazioni tra il browser e il server siano criptate. La configurazione di HTTPS è stata realizzata manualmente, utilizzando certificati SSL validi per proteggere i dati e migliorare l'affidabilità del sito.
+                    </p>
+                    <p>
+                        <strong>Il sito è ospitato su un server Hetzner con un dominio personalizzato</strong>, che ho configurato autonomamente per garantire performance elevate e sicurezza. Questo processo include la gestione completa del server e della configurazione del dominio.
+                    </p>
+                    <p>
+                        La sezione "Progetti" è alimentata da un backend realizzato in Spring Boot, che gestisce dinamicamente i dati tramite API. Ogni progetto viene caricato in tempo reale, offrendo un'esperienza utente fluida e interattiva.
+                    </p>
+                    <p>
+                        Nonostante le funzionalità moderne, l'intero sistema è stato progettato per essere semplice ed efficiente, dimostrando come frontend e backend possano lavorare insieme in modo efficace in un'applicazione full-stack.
                     </p>
                 </div>
             </section>
             
-        </div>
-    </div>
-</section>
