@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { HttpService } from '../servizi/http.service';
+import { HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-backend',
@@ -20,6 +22,11 @@ isAuthenticated: any;
 @Output() authStatus = new EventEmitter<boolean>();
 
 
+constructor(private http:HttpService){
+
+}
+
+
   toggleCode() {
     this.showCode = !this.showCode; // Cambia lo stato di visibilità
   }
@@ -28,9 +35,24 @@ isAuthenticated: any;
     // Simulazione della generazione di un token JWT
     this.registerEmail = registerForm.value.email;
     this.registerPassword = registerForm.value.password;
+
+    const body = { email: this.registerEmail, password: this.registerPassword };
     console.log(this.loginEmail,this.loginPassword)
-    this.jwtToken = 'token_' + Math.random().toString(36).substring(2, 15); // Genera un token casuale
-    localStorage.setItem('jwtToken', this.jwtToken); // Salva il token nel localStorage
+
+    this.http.register(body).subscribe({next:(token:string)=>{
+      localStorage.setItem('jwtToken', token);
+      console.log('Token salvato nel localStorage:', token);
+
+    },
+    error: (err) => {
+      console.error('Errore durante la registrazione:', err);
+      // Mostrare una notifica all'utente
+    }
+
+    });
+
+    //this.jwtToken = 'token_' + Math.random().toString(36).substring(2, 15); // Genera un token casuale
+    //localStorage.setItem('jwtToken', this.jwtToken); // Salva il token nel localStorage
     this.showRegisterInfo = true;
 
     registerForm.reset()
@@ -38,33 +60,71 @@ isAuthenticated: any;
 
   // Simula il login
   onLogin(loginForm: NgForm) {
-    const tokenInput = loginForm.value.jwtToken;
+    const registerToken = localStorage.getItem('jwtToken');
+
+    if (!registerToken) {
+      throw new Error('Token non trovato. Effettua prima la registrazione.');
+    }
+
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${registerToken}`);
 
    
       // Confronta le credenziali
       const emailInput = loginForm.value.email;
       const passwordInput = loginForm.value.password;
 
-      console.log(emailInput,passwordInput,this.registerEmail,this.registerPassword)
+      const loginBody = {
+        email: emailInput,
+        password: passwordInput,
+      };
 
-      if (emailInput !== this.registerEmail || passwordInput !== this.registerPassword) {
-        alert('Le credenziali non sono corrette. Riprova.');
-      } else {
+      console.log('Credenziali inserite:', emailInput, passwordInput);
+
+      this.http.authenticate(loginBody).subscribe({
+        next: (tokenAuth) => {
+          console.log('Accesso riuscito:', tokenAuth);
+          this.isAuthenticated = true; // L'utente è autenticato
+          this.authStatus.emit(this.isAuthenticated);
+          this.showLoginInfo = true;
+          
+          if (tokenAuth) {
+            localStorage.setItem('tokenAuth', tokenAuth);
+          } else {
+            console.error('Token di autenticazione non ricevuto.');
+          }
+    
+          alert('Accesso effettuato con successo!');
+        },
+        error: (error) => {
+          console.error('Errore durante il login:', error);
+          alert('Errore durante l\'accesso. Controlla le credenziali.');
+        },
+      });
+
+      //if (emailInput !== this.registerEmail || passwordInput !== this.registerPassword) {
+      //   alert('Le credenziali non sono corrette. Riprova.');
+     //  } else {
         // Logica per il login
-        alert('Accesso riuscito!');
+     //    alert('Accesso riuscito!');
         // Qui potresti salvare il token o reindirizzare l'utente
-      }
+     //  }
+
+
+
+
+
 
       loginForm.reset()
       // Reset del modulo
     
 
-    if (tokenInput === this.jwtToken) {
-      this.isAuthenticated = true; // L'utente è autenticato
-      this.authStatus.emit(this.isAuthenticated);
-      this.showLoginInfo = true;
-    } else {
-      alert('Token non valido!'); // Gestione errore
+  //   if (tokenInput === this.jwtToken) {
+  //     this.isAuthenticated = true; // L'utente è autenticato
+  //     this.authStatus.emit(this.isAuthenticated);
+  //     this.showLoginInfo = true;
+  //   } else {
+  //     alert('Token non valido!'); // Gestione errore
+  //   }
+  // }
     }
-  }
 }
