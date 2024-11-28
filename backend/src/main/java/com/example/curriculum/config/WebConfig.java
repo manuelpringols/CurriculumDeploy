@@ -19,7 +19,7 @@ public class WebConfig implements WebMvcConfigurer {
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**") // consente tutte le richieste a tutti gli endpoint
-                .allowedOrigins("https://manuelpringols.info") // sostituisci con il tuo dominio GitHub Pages
+                .allowedOrigins("*") // sostituisci con il tuo dominio GitHub Pages
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS") // specifica i metodi consentiti
                 .allowCredentials(false); // se hai bisogno di inviare credenziali
     }
