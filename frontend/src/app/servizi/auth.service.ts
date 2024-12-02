@@ -6,7 +6,7 @@ import {jwtDecode} from 'jwt-decode';
 })
 export class AuthService {
 
-  private readonly TOKEN_KEY = 'auth_token';
+  private readonly TOKEN_KEY = 'tokenAuth';
 
   constructor() { }
 

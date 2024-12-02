@@ -69,8 +69,10 @@ scrollToBackend() {
 
   
   ngOnInit(){
-    this.getProjectDescription1();
-    this.getProjectDescription2();
+    if(this.isAuthenticated){
+      this.getProjectDescription1();
+      this.getProjectDescription2();
+    }
     this.isAuthenticated=this.authService.isTokenValid();
   }
 
