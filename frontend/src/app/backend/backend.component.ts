@@ -40,8 +40,10 @@ constructor(private http:HttpService){
     console.log(this.loginEmail,this.loginPassword)
 
     this.http.register(body).subscribe({next:(token:string)=>{
+
       localStorage.setItem('jwtToken', token);
       console.log('Token salvato nel localStorage:', token);
+      this.jwtToken=token;
 
     },
     error: (err) => {

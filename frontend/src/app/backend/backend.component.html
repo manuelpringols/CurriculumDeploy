@@ -65,7 +65,7 @@
                 <p>Quando clicchi su "Registrati", il backend genera un token JWT e lo restituisce al browser. Questo token viene salvato localmente per future richieste di accesso.</p>
                 <div><p ><strong>Token JWT:</strong></p><span  ><p style="color: #ffffff !important; box-shadow: 1px 1px 1px 1px greenyellow; border-radius: 0.5vw; width: fit-content; padding: 1vw; " >{{ jwtToken }}</p></span></div>
                 <img src="assets/google.png">
-                <p>Il localStorage può essere visionato anche dalla console di Google</p>
+                <p>Il localStorage o i vari cookie per salvare la "sessione" ,possono essere visionati anche dalla console di Google</p>
             </div>
             
             <form (ngSubmit)="onLogin(loginForm)" #loginForm="ngForm">
@@ -77,8 +77,8 @@
                 <button type="submit">Accedi</button>
             </form>
             <div *ngIf="showLoginInfo" class="info-message">
-                <p>Quando clicchi su "Accedi", il token JWT salvato viene inviato al backend per verificare l'autenticità. Se le credenziali sono corrette, ottieni accesso alle funzionalità protette.</p>
-                <p>Inoltre, la sezione "Progetti" è ora visibile, dimostrando come funziona realmente il backend in questo semplice esempio. È importante notare che nella pratica le cose possono essere più complesse: tutti i path degli endpoint sono protetti, tranne quelli di registrazione e autenticazione, che sono accessibili senza restrizioni.</p>
+                <p>Quando clicchi su "Accedi", il token JWT salvato viene inviato al backend(sottoforma di parametro nell Header della richiesta) per verificare l'autenticità. Se le credenziali sono corrette, ottieni accesso alle funzionalità protette.</p>
+                <p>Inoltre, la sezione "Progetti" è ora visibile, dimostrando come funziona realmente il backend in questo semplice esempio. È importante notare che nella pratica le cose possono essere più complesse: tutti i path degli endpoint sono protetti, tranne quelli di registrazione e autenticazione, che sono accessibili senza restrizioni. I restanti vengono resi disponibili solamente se si è autenticati</p>
             </div>
 
             <h3>4. Connessione al Database</h3>

@@ -4,6 +4,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { NgsRevealModule } from 'ngx-scrollreveal';
 import { HttpService } from './servizi/http.service';
+import { AuthService } from './servizi/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -30,7 +31,7 @@ isAuthenticated: boolean=false;
 isPlaying: boolean= false;
 state: string = 'hidden';
 jwtToken: any;
-constructor(private spotifyService: SpotifyService, @Inject(PLATFORM_ID) private platformId: Object,private el: ElementRef, private renderer: Renderer2, private http:HttpService) {}
+constructor(private spotifyService: SpotifyService, @Inject(PLATFORM_ID) private platformId: Object,private el: ElementRef, private renderer: Renderer2, private http:HttpService, private authService:AuthService) {}
 
 
   title = 'sito_curriculum';
@@ -70,6 +71,7 @@ scrollToBackend() {
   ngOnInit(){
     this.getProjectDescription1();
     this.getProjectDescription2();
+    this.isAuthenticated=this.authService.isTokenValid();
   }
 
   ngAfterViewInit(){
