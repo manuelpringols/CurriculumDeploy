@@ -72,6 +72,8 @@ scrollToBackend() {
     if(this.isAuthenticated){
       this.getProjectDescription1();
       this.getProjectDescription2();
+      console.log("MARIO BIONDI token " + this.isAuthenticated + "cappellano")
+
     }
     this.isAuthenticated=this.authService.isTokenValid();
     console.log("MARIO BIONDI token " + this.isAuthenticated)
