@@ -1,8 +1,9 @@
 package com.example.curriculum.config;
 
-import java.io.IOException;
+import java.util.List;
 
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -10,63 +11,86 @@ import org.springframework.security.web.authentication.WebAuthenticationDetailsS
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import io.micrometer.common.lang.NonNull;
+import io.jsonwebtoken.io.IOException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import lombok.RequiredArgsConstructor;
 
 @Component
-@RequiredArgsConstructor
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
-	private final JwtService jwtService;
+    private final JwtService jwtService;
+    private final UserDetailsService userDetailsService;
 
-	private final UserDetailsService userDetailsService;// implementazione dell'interfaccia UserDetails con l'uso dell
-														// prefisso final per indicare a spring che vogliamo prendere
-														// gli user direttamente dal nostro database
+    public JwtAuthenticationFilter(JwtService jwtService, UserDetailsService userDetailsService) {
+        this.jwtService = jwtService;
+        this.userDetailsService = userDetailsService;
+    }
 
-	@Override
-	protected void doFilterInternal( // la prima cosa che deve fare il filtro è controllare se la richiesta ha il jwt
-										// token
-			@NonNull HttpServletRequest request, @NonNull HttpServletResponse response,
-			@NonNull FilterChain filterChain) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		final String authHeader = request.getHeader("Authorization");
-		final String jwt; // token
-		if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-			filterChain.doFilter(request, response);
-			return;
-		}
-		jwt = authHeader.substring(7);// numero di caratteri della stringa Bearer
-		final String userEmail;
-		userEmail = jwtService.extractUsername(jwt); // creiamo una classe in grado di manipolare il jwt token
+    @Override
+    protected void doFilterInternal(HttpServletRequest request,
+                                     HttpServletResponse response,
+                                     FilterChain filterChain) throws ServletException, IOException, java.io.IOException {
 
-		if (userEmail != null && SecurityContextHolder.getContext().getAuthentication() == null) {// quando il secondo
-																									// parametro è null,
-																									// vuol dire che
-																									// l'user non è
-																									// ancora
-																									// autenticato
-			UserDetails userDetails = this.userDetailsService.loadUserByUsername(userEmail);
+        final String authHeader = request.getHeader("Authorization");
+        final String jwtToken;
+        final String username;
 
-			if (jwtService.isTokenValid(jwt,
-					userDetails)) { /*
-									 * Il JwtService ci permette di leggere all interno del token email e
-									 * password, in modo da controllare se tale utente è gia presente nel nostro
-									 * archivio, database
-									 */
+        // Verifica se l'Authorization header è presente e contiene "Bearer "
+        if (authHeader == null || !authHeader.startsWith("Bearer ")) {
+            filterChain.doFilter(request, response);
+            return;
+        }
 
-				UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(userDetails,
-						null, userDetails.getAuthorities());
-				authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-				SecurityContextHolder.getContext().setAuthentication(authToken);
+        jwtToken = authHeader.substring(7); // Rimuove "Bearer " dal token
+        username = jwtService.extractUsername(jwtToken); // Estrai il nome utente dal token
 
-				filterChain.doFilter(request, response);
-			}
+        if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
+            // Carica i dettagli dell'utente
+            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
 
-		}
-	}
+            // Controlla se il token è valido
+            if (jwtService.isTokenValid(jwtToken, userDetails)) {
+                
+                // Estrai il tipo di token
+                String tokenType = jwtService.extractTokenType(jwtToken);
 
+                if ("REGISTER".equals(tokenType)) {
+                    // Se il token è di tipo REGISTER, consenti il login e genera un nuovo token di tipo LOGIN
+                    List<SimpleGrantedAuthority> authorities = jwtService.extractAuthorities(jwtToken);
+
+                    // Crea un nuovo token di tipo LOGIN
+                    String loginToken = jwtService.generateToken(userDetails, "LOGIN");  // Cambia con il tipo "LOGIN"
+
+                    // Rilascia il token di login come risposta
+                    response.setHeader("Authorization", "Bearer " + loginToken);
+                    return;
+                }
+
+                if ("LOGIN".equals(tokenType)) {
+                    // Il token è di tipo LOGIN, quindi autentica l'utente
+                    List<SimpleGrantedAuthority> authorities = jwtService.extractAuthorities(jwtToken);
+
+                    // Crea il token di autenticazione con le autorità dell'utente
+                    UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                            userDetails,
+                            null,
+                            authorities
+                    );
+                    authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+
+                    // Imposta l'autenticazione nel contesto di sicurezza di Spring
+                    SecurityContextHolder.getContext().setAuthentication(authToken);
+                } else {
+                    // Token non valido per l'accesso
+                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+                    return;
+                }
+            }
+        }
+
+        // Continua con la catena di filtri
+        filterChain.doFilter(request, response);
+    }
 }

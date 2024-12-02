@@ -60,25 +60,27 @@ constructor(private http:HttpService){
 
   // Simula il login
   onLogin(loginForm: NgForm) {
-    const registerToken = localStorage.getItem('jwtToken');
 
-    if (!registerToken) {
-      throw new Error('Token non trovato. Effettua prima la registrazione.');
-    }
+   // if (!registerToken) {
+   //   throw new Error('Token non trovato. Effettua prima la registrazione.');
+   // }
 
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${registerToken}`);
 
    
       // Confronta le credenziali
       const emailInput = loginForm.value.email;
       const passwordInput = loginForm.value.password;
+      const tokenInput = loginForm.value.jwtToken;
+
 
       const loginBody = {
         email: emailInput,
         password: passwordInput,
+        
       };
 
       console.log('Credenziali inserite:', emailInput, passwordInput);
+      console.log('tokenRegister salvato:',localStorage.getItem('jwtToken'))
 
       this.http.authenticate(loginBody).subscribe({
         next: (tokenAuth) => {

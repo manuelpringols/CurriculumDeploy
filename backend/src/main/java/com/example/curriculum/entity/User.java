@@ -1,12 +1,15 @@
 package com.example.curriculum.entity;
 
 import java.util.Collection;
+import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import jakarta.persistence.Column;
+import jakarta.persistence.ElementCollection;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -51,5 +54,9 @@ public class User implements UserDetails  {
 		// TODO Auto-generated method stub
 		return email;
 	}
+
+
+	 @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles; // Può essere una lista di stringhe, es. ["ROLE_USER", "ROLE_ADMIN"]
 
 }

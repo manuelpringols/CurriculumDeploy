@@ -8,7 +8,9 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,49 +34,38 @@ public class AuthenticationService {
 	private final JwtService jwtService;
 	private final AuthenticationManager authenticationManager;
 	
-	public List<String> register(User userR) {// Questo metodo register ci permetterà di creare e
-						
-		
-		// salvare uno user nel nostro database e
-		var user = User.builder()				
-				.email(userR.getEmail())
-				.password(passwordEncoder.encode(userR.getPassword()))
-				.build();
-				repository.save(user);
-				var jwtToken = jwtService.generateToken(user);
-				// ritornare da esso, il generatedToken
-				List tokenId = new ArrayList<>() ;
-				
-				tokenId.add(jwtToken);
-				
-		return tokenId;
-				
+	public String register(User userR) {
+	    var user = User.builder()
+	            .email(userR.getEmail())
+	            .password(passwordEncoder.encode(userR.getPassword()))
+	            .build();
+	    repository.save(user);
 
-	}
-	
-	
-	
+	    // Generazione del token di registrazione
+	    var jwtToken = jwtService.generateToken(userR, "REGISTER");
 
-	public List<String> authenticate(AuthenticationRequest request) {
-		authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(
-				request.getEmail(),
-				request.getPassword()
-				) 
-				);// l'autenticationManager ha bisogno di username e password per funzionare 
-				
-			var user = repository.findByEmail(request.getEmail());
-		
-		
-		 var jwtToken = jwtService.generateToken(user);
-		// ritornare da esso, il generatedToken
-		 
-		 List tokenId = new ArrayList<>() ;
-		 tokenId.add(jwtToken);
-		 
-			return tokenId;
-
-
+	    return jwtToken;  // Restituisci il token direttamente
 	}
 
+	
+	
+	
+
+	public String authenticate(AuthenticationRequest request) {
+	    authenticationManager.authenticate(
+	            new UsernamePasswordAuthenticationToken(
+	                    request.getEmail(),
+	                    request.getPassword()
+	            )
+	    );
+
+	    var user = repository.findByEmail(request.getEmail());
+
+	    Map<String, Object> claims = new HashMap<>();
+	    claims.put("authorities", user.getRoles());
+
+	    var jwtToken = jwtService.generateToken(user, "LOGIN");
+
+	    return jwtToken;  // Restituisci il token direttamente
+	}
 }
