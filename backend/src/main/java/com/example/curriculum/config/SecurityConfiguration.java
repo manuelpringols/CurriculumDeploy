@@ -47,7 +47,8 @@ public class SecurityConfiguration {
 	        .sessionManagement()
 	        .sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Utilizza JWT e non la sessione
 	        .and()
-	        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class); // Aggiungi il filtro JWT prima del filtro di autenticazione di base
+	        .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
+	        .cors();// Aggiungi il filtro JWT prima del filtro di autenticazione di base
 
 	    return http.build();
 	}
