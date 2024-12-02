@@ -30,67 +30,76 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
     @Override
     protected void doFilterInternal(HttpServletRequest request,
-                                     HttpServletResponse response,
-                                     FilterChain filterChain) throws ServletException, IOException, java.io.IOException {
+                                    HttpServletResponse response,
+                                    FilterChain filterChain) throws ServletException, IOException {
 
         final String authHeader = request.getHeader("Authorization");
         final String jwtToken;
         final String username;
 
-        // Verifica se l'Authorization header è presente e contiene "Bearer "
+        System.out.println("Incoming request: " + request.getRequestURI());
+
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            filterChain.doFilter(request, response);
+            System.out.println("Authorization header is missing or invalid.");
+            try {
+                filterChain.doFilter(request, response);
+            } catch (java.io.IOException | ServletException e) {
+                e.printStackTrace();
+            }
             return;
         }
 
-        jwtToken = authHeader.substring(7); // Rimuove "Bearer " dal token
-        username = jwtService.extractUsername(jwtToken); // Estrai il nome utente dal token
+        jwtToken = authHeader.substring(7);
+        System.out.println("JWT Token extracted: " + jwtToken);
+
+        username = jwtService.extractUsername(jwtToken);
+        System.out.println("Username extracted: " + username);
 
         if (username != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            // Carica i dettagli dell'utente
             UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+            System.out.println("User details loaded for username: " + username);
 
-            // Controlla se il token è valido
             if (jwtService.isTokenValid(jwtToken, userDetails)) {
-                
-                // Estrai il tipo di token
                 String tokenType = jwtService.extractTokenType(jwtToken);
+                System.out.println("Token type extracted: " + tokenType);
 
-                if ("REGISTER".equals(tokenType)) {
-                    // Se il token è di tipo REGISTER, consenti il login e genera un nuovo token di tipo LOGIN
-                    List<SimpleGrantedAuthority> authorities = jwtService.extractAuthorities(jwtToken);
-
-                    // Crea un nuovo token di tipo LOGIN
-                    String loginToken = jwtService.generateToken(userDetails, "LOGIN");  // Cambia con il tipo "LOGIN"
-
-                    // Rilascia il token di login come risposta
-                    response.setHeader("Authorization", "Bearer " + loginToken);
-                    return;
-                }
-
-                if ("LOGIN".equals(tokenType)) {
-                    // Il token è di tipo LOGIN, quindi autentica l'utente
-                    List<SimpleGrantedAuthority> authorities = jwtService.extractAuthorities(jwtToken);
-
-                    // Crea il token di autenticazione con le autorità dell'utente
-                    UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                            userDetails,
-                            null,
-                            authorities
-                    );
-                    authToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-
-                    // Imposta l'autenticazione nel contesto di sicurezza di Spring
-                    SecurityContextHolder.getContext().setAuthentication(authToken);
+                if (request.getRequestURI().equals("/api/auth/authenticate")) {
+                    System.out.println("Request is for /api/auth/authenticate endpoint.");
+                    if (!"REGISTER".equals(tokenType)) {
+                        System.out.println("Token type is not REGISTER. Access denied.");
+                        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                        return;
+                    }
+                    System.out.println("Token type is REGISTER. Access granted.");
                 } else {
-                    // Token non valido per l'accesso
-                    response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
-                    return;
+                    System.out.println("Request is for another endpoint.");
+                    if (!"LOGIN".equals(tokenType)) {
+                        System.out.println("Token type is not LOGIN. Access denied.");
+                        response.setStatus(HttpServletResponse.SC_FORBIDDEN);
+                        return;
+                    }
+                    System.out.println("Token type is LOGIN. Access granted.");
                 }
+
+                // Autenticazione standard per entrambi i casi
+                UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
+                    userDetails,
+                    null,
+                    userDetails.getAuthorities()
+                );
+                SecurityContextHolder.getContext().setAuthentication(authToken);
+                System.out.println("Authentication set in SecurityContext.");
+            } else {
+                System.out.println("Token is invalid.");
             }
+        } else {
+            System.out.println("Username is null or user is already authenticated.");
         }
 
-        // Continua con la catena di filtri
-        filterChain.doFilter(request, response);
+        try {
+            filterChain.doFilter(request, response);
+        } catch (java.io.IOException | ServletException e) {
+            e.printStackTrace();
+        }
     }
 }
