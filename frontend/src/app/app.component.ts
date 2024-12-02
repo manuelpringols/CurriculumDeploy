@@ -74,6 +74,8 @@ scrollToBackend() {
       this.getProjectDescription2();
     }
     this.isAuthenticated=this.authService.isTokenValid();
+    console.log("MARIO BIONDI token " + this.isAuthenticated)
+
   }
 
   ngAfterViewInit(){

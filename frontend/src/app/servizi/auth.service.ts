@@ -30,6 +30,7 @@ export class AuthService {
       const currentTime = Math.floor(Date.now() / 1000); // Tempo corrente in secondi
       return decodedToken.exp > currentTime; // Verifica se il token è scaduto
     } catch (e) {
+      console.log("MARIO BIONDI token expired")
       return false;
     }
   }
