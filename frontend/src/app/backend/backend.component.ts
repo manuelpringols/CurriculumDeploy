@@ -39,7 +39,7 @@ constructor(private http:HttpService){
     // Simulazione della generazione di un token JWT
 
 
-    
+
     this.registerEmail = registerForm.value.email;
     this.registerPassword = registerForm.value.password;
 
@@ -120,7 +120,8 @@ constructor(private http:HttpService){
           this.isAuthenticated = true; // L'utente è autenticato
           this.authStatus.emit(this.isAuthenticated);
           this.showLoginInfo = true;
-          this.onRegister
+          this.getProjectDescription1()
+          this.getProjectDescription2()
           
           if (tokenAuth) {
             localStorage.setItem('tokenAuth', tokenAuth);
