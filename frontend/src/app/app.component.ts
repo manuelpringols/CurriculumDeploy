@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, Inject, PLATFORM_ID, Renderer2 } from '@angular/core';
+import { ChangeDetectorRef, Component, ElementRef, HostListener, Inject, PLATFORM_ID, Renderer2 } from '@angular/core';
 import { SpotifyService } from './servizi/spotify.service';
 import { isPlatformBrowser } from '@angular/common';
 import { animate, state, style, transition, trigger } from '@angular/animations';
@@ -31,7 +31,14 @@ isAuthenticated: boolean=false;
 isPlaying: boolean= false;
 state: string = 'hidden';
 jwtToken: any;
-constructor(private spotifyService: SpotifyService, @Inject(PLATFORM_ID) private platformId: Object,private el: ElementRef, private renderer: Renderer2, private http:HttpService, private authService:AuthService) {}
+constructor(private spotifyService: SpotifyService, 
+  @Inject(PLATFORM_ID) private platformId: Object,
+  private el: ElementRef, 
+  private renderer: Renderer2, 
+  private http:HttpService, 
+  private authService:AuthService,
+  private cdr : ChangeDetectorRef) {}
+ 
 
 
   title = 'sito_curriculum';
@@ -130,7 +137,7 @@ scrollToBackend() {
     
     this.projectInformation1 = data[1];
     this.projectInformation2 = data[0];
-
+    this.cdr.detectChanges()
     console.log('Dati ricevuti dal componente figlio:', data);
   }
 
