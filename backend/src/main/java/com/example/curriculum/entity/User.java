@@ -1,5 +1,6 @@
 package com.example.curriculum.entity;
 
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
@@ -13,6 +14,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.PrePersist;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -53,7 +55,16 @@ public class User implements UserDetails  {
 	public String getUsername() {
 		// TODO Auto-generated method stub
 		return email;
+		
+		
 	}
+
+	 private LocalDateTime createdAt;  // Data di creazione
+
+	    @PrePersist
+	    public void prePersist() {
+	        this.createdAt = LocalDateTime.now();  // Imposta il timestamp di creazione
+	    }
 
 
 	 @ElementCollection(fetch = FetchType.EAGER)

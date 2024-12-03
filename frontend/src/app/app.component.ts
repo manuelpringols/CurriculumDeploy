@@ -126,6 +126,14 @@ scrollToBackend() {
    
   }
 
+  handleData(data: any) {
+    
+    this.projectInformation1 = data[1];
+    this.projectInformation2 = data[0];
+
+    console.log('Dati ricevuti dal componente figlio:', data);
+  }
+
 
  
 

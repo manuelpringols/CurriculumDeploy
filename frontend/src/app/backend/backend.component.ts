@@ -20,6 +20,10 @@ loginPassword: any;
 jwtToken: any;
 isAuthenticated: any;
 @Output() authStatus = new EventEmitter<boolean>();
+@Output() dataProject = new EventEmitter<any>();
+
+  projectInformation1: any;
+  projectInformation2: any;
 
 
 constructor(private http:HttpService){
@@ -33,6 +37,9 @@ constructor(private http:HttpService){
 
   onRegister(registerForm:NgForm) {
     // Simulazione della generazione di un token JWT
+
+
+    
     this.registerEmail = registerForm.value.email;
     this.registerPassword = registerForm.value.password;
 
@@ -59,6 +66,29 @@ constructor(private http:HttpService){
 
     registerForm.reset()
   }
+
+  getProjectDescription1(){
+      this.http.getProjectDescription(1).subscribe((dati: any) => {
+        console.log('dati ricevuti', dati);
+        this.projectInformation1 = dati
+        this.dataProject.emit(dati)
+        });
+     
+     
+    }
+  
+  
+    getProjectDescription2(){
+      this.http.getProjectDescription(2).subscribe((dati: any) => {
+        console.log('dati ricevuti', dati);
+        this.projectInformation2 = dati
+        this.dataProject.emit(dati)
+
+  
+        });
+     
+     
+    }
 
   // Simula il login
   onLogin(loginForm: NgForm) {
@@ -90,6 +120,7 @@ constructor(private http:HttpService){
           this.isAuthenticated = true; // L'utente è autenticato
           this.authStatus.emit(this.isAuthenticated);
           this.showLoginInfo = true;
+          this.onRegister
           
           if (tokenAuth) {
             localStorage.setItem('tokenAuth', tokenAuth);
@@ -131,4 +162,7 @@ constructor(private http:HttpService){
   //   }
   // }
     }
+
+
+    
 }
