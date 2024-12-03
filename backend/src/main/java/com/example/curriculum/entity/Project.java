@@ -10,7 +10,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "progetti")
+@Table(name = "progetti",schema = "app")
 public class Project {
 	
 	
