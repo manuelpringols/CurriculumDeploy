@@ -63,7 +63,7 @@
             </form>
             <div *ngIf="showRegisterInfo" class="info-message">
                 <p>Quando clicchi su "Registrati", il backend genera un token JWT e lo restituisce al browser. Questo token viene salvato localmente per future richieste di accesso.</p>
-                <div><p ><strong>Token JWT:</strong></p><span  ><p style="color: #ffffff !important; box-shadow: 1px 1px 1px 1px greenyellow; border-radius: 0.5vw; width: fit-content; padding: 1vw; " >{{ jwtToken }}</p></span></div>
+                <div><p ><strong>Token JWT:</strong></p><span  ><p style="color: #ffffff !important; box-shadow: 1px 1px 1px 1px greenyellow; border-radius: 0.5vw; width: fit-content; padding: 1vw; max-width: -moz-available; overflow:auto; " >{{ jwtToken }}</p></span></div>
                 <img src="assets/google.png">
                 <p>Il localStorage o i vari cookie per salvare la "sessione" ,possono essere visionati anche dalla console di Google</p>
             </div>
