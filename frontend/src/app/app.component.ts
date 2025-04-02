@@ -20,6 +20,7 @@ import { AuthService } from './servizi/auth.service';
   ]
 })
 export class AppComponent {
+[x: string]: any;
 toggleMenu() {
   this.menuOpen = !this.menuOpen;
 }
@@ -31,14 +32,14 @@ isAuthenticated: boolean=false;
 isPlaying: boolean= false;
 state: string = 'hidden';
 jwtToken: any;
-constructor(private spotifyService: SpotifyService, 
+constructor(private spotifyService: SpotifyService,
   @Inject(PLATFORM_ID) private platformId: Object,
-  private el: ElementRef, 
-  private renderer: Renderer2, 
-  private http:HttpService, 
+  private el: ElementRef,
+  private renderer: Renderer2,
+  private http:HttpService,
   private authService:AuthService,
   private cdr : ChangeDetectorRef) {}
- 
+
 
 
   title = 'sito_curriculum';
@@ -48,6 +49,9 @@ trackId = '7H7NyZ3G075GqPx2evsfeb';
 projectInformation1:any;
 
 projectInformation2:any;
+
+projectInformation3:any;
+
 
 
 menuOpen = false;
@@ -74,7 +78,7 @@ scrollToBackend() {
     }
   }
 
-  
+
   ngOnInit(){
 
     this.isAuthenticated=this.authService.isTokenValid();
@@ -83,10 +87,11 @@ scrollToBackend() {
     if(this.isAuthenticated){
       this.getProjectDescription1();
       this.getProjectDescription2();
+      this.getProjectDescription3()
       console.log("MARIO BIONDI token " + this.isAuthenticated + "cappellano")
 
     }
-    
+
   }
 
   ngAfterViewInit(){
@@ -95,7 +100,7 @@ scrollToBackend() {
       this.spotifyService.createSpotifyPlayer('embed-iframe', 'spotify:playlist:37i9dQZF1DXcBWIGoYBM5M');
     }
 
-    
+
 
   }
 
@@ -118,8 +123,8 @@ scrollToBackend() {
       this.projectInformation1 = dati
 
       });
-   
-   
+
+
   }
 
 
@@ -129,12 +134,22 @@ scrollToBackend() {
       this.projectInformation2 = dati
 
       });
-   
-   
+
+
+  }
+
+  getProjectDescription3(){
+    this.http.getProjectDescription(3).subscribe((dati: any) => {
+      console.log('dati ricevuti', dati);
+      this.projectInformation3 = dati
+
+      });
+
+
   }
 
   handleData(data: any) {
-    
+
     this.projectInformation1 = data[1];
     this.projectInformation2 = data[0];
     this.cdr.detectChanges()
@@ -142,7 +157,7 @@ scrollToBackend() {
   }
 
 
- 
+
 
 
 
@@ -164,9 +179,9 @@ authenticate() {
 
 
 
-  
 
-  
 
-  
+
+
+
 

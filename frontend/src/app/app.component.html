@@ -144,7 +144,7 @@
             <li>Utilizzo di DevTools per un rapido sviluppo</li>
           </ul>
         </div>
-  
+
         <div class="skill-item">
           <h3><i class="fab fa-angular"></i> Angular</h3>
           <p>
@@ -156,7 +156,7 @@
             <li>Gestione dei servizi e comunicazione HTTP</li>
             <li>Implementazione della reattività con RxJS</li>
             <li>Stilizzazione con CSS e Angular Material</li>
-           
+
           </ul>
         </div>
       </div>
@@ -165,21 +165,21 @@
 
   <section [@fadeIn]="state" id="auth" class="section">
     <p class="intro-text">
-      Per poter visionare l'area progetti, ho strutturato una piccola autenticazione con JWT token. 
-      Ho ideato un modulo di autenticazione che, una volta compilato con le credenziali corrette, mostrerà un token JWT. 
-      Questo token dovrà essere incollato nel modulo di registrazione per accedere a determinate funzionalità. 
+      Per poter visionare l'area progetti, ho strutturato una piccola autenticazione con JWT token.
+      Ho ideato un modulo di autenticazione che, una volta compilato con le credenziali corrette, mostrerà un token JWT.
+      Questo token dovrà essere incollato nel modulo di registrazione per accedere a determinate funzionalità.
       In questo modo, il sistema dimostra come l'autenticazione e l'autorizzazione possano funzionare a livello teorico di backend.
     </p>
-  
+
     <!-- Pulsante per scorrere verso la sezione app-backend -->
     <button (click)="scrollToBackend()" >Autenticazione</button>
-  
-    
+
+
   </section>
-  
-  
-  
-  
+
+
+
+
 
 
   <!-- progetti.component.html -->
@@ -199,8 +199,8 @@
       <div class="project">
         <h3><i class="fas fa-mobile-alt"></i> PinGo</h3>
         <p>
-          
-          <strong>PinGo</strong>{{projectInformation1}} 
+
+          <strong>PinGo</strong>{{projectInformation1}}
         </p>
         <div class="screenshot-container">
           <img src="assets/1.jpg" alt="Screenshot 1 di PinGo" class="screenshot">
@@ -208,13 +208,13 @@
           <img src="assets/3.jpg" alt="Screenshot 3 di PinGo" class="screenshot">
         </div>
 
-       
+
         <p class="project-status">
-          
+
           <strong>Stato del Progetto:</strong> In fase di sviluppo.
         </p>
 
-        
+
       </div>
 
       <div class="project">
@@ -232,8 +232,35 @@
         </p>
       </div>
 
+
+
+      <div class="project">
+        <h3><i class="fas fa-tasks"></i> Copio</h3>
+        <p>
+          {{projectInformation3}}
+        </p>
+
+        <div class="copio-cta">
+          <h4>Vuoi provare Copio ora?</h4>
+          <p>Scopri come può semplificare il tuo workflow di sviluppo!</p>
+          <a href="https://copio.online" target="_blank" class="copio-link">
+            <span href="https://copio.online">Visita Copio.online</span>
+            <i class="fas fa-external-link-alt"></i>
+          </a>
+          <div href="https://copio.online" class="copio-hint">
+            <i href="https://copio.online" class="fas fa-hand-point-right"></i> Clicca qui per provare subito!
+          </div>
+        </div>
+        <div class="screenshot-container2">
+
+        </div>
+        <p class="project-status">
+          <strong>Stato del Progetto:</strong> Funzionante, ma ancora in fase di sviluppo per miglioramenti futuri.
+        </p>
+      </div>
+
       <!-- Overlay per la finta autenticazione -->
-     
+
 
     </div>
   </div>
@@ -254,11 +281,11 @@
       <p class="intro-text">
         Anche se non ho ancora portato a termine progetti completi utilizzabili pubblicamente, sto lavorando su alcuni progetti personali che rappresentano le mie competenze e la mia passione per lo sviluppo. Ecco i principali su cui sto concentrando le mie energie.
       </p>
-  
+
       <div *ngFor="let project of projectInformation" class="project">
         <h3><i class="fas fa-mobile-alt"></i> {{project.title}}</h3>
         <p>
-          
+
           <strong>{{project.title}}</strong> {{project.description}}
         <div class="screenshot-container">
           <img src="assets/1.jpg" alt="Screenshot 1 di PinGo" class="screenshot">
@@ -269,13 +296,13 @@
           <strong>Stato del Progetto:</strong> In fase di sviluppo.
         </p>
       </div>
-  
-     
-  
+
+
+
     </div>
   </section>
   -->
-  
+
 
 
   <section  [@fadeIn] id="esperienza" class="section">
@@ -306,7 +333,7 @@
       </div>
     </div>
   </section>
-  
+
 
 <section  [@fadeIn] id="contatti" class="section">
   <div class="container">
