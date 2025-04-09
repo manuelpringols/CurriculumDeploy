@@ -52,6 +52,9 @@ projectInformation2:any;
 
 projectInformation3:any;
 
+projectInformation4:any;
+
+
 
 
 menuOpen = false;
@@ -88,6 +91,8 @@ scrollToBackend() {
       this.getProjectDescription1();
       this.getProjectDescription2();
       this.getProjectDescription3()
+      this.getProjectDescription4()
+
       console.log("MARIO BIONDI token " + this.isAuthenticated + "cappellano")
 
     }
@@ -142,6 +147,16 @@ scrollToBackend() {
     this.http.getProjectDescription(3).subscribe((dati: any) => {
       console.log('dati ricevuti', dati);
       this.projectInformation3 = dati
+
+      });
+
+
+  }
+
+  getProjectDescription4(){
+    this.http.getProjectDescription(4).subscribe((dati: any) => {
+      console.log('dati ricevuti', dati);
+      this.projectInformation4 = dati
 
       });
 
