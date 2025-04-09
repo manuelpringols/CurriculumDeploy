@@ -551,36 +551,47 @@ a {
   text-align: center;
 }
 
-/* CTA Button Container */
 .cta-container {
   text-align: center;
-  margin-top: 30px; /* Increased margin for better spacing */
+  margin-top: 30px; /* Maggiore spazio sopra il bottone */
 }
 
-/* CTA Button */
 .cta-button {
   display: inline-block;
-  padding: 25px 50px; /* Increased padding for a larger button */
-  font-size: 22px; /* Increased font size for better readability */
-  background: linear-gradient(45deg, #6c63ff, #4a54d7); /* Gradient background matching site theme */
+  padding: 12px 25px;
+  font-size: 18px;
+  background: linear-gradient(45deg, #8e44ad, #6c5ce7); /* Gradiente più morbido tra viola e lilla */
   color: white;
   text-decoration: none;
-  border-radius: 12px; /* Rounded corners for a smoother look */
-  box-shadow: 0px 8px 22px rgba(0, 0, 0, 0.2); /* Subtle shadow for a floating effect */
-  transition: all 0.3s ease; /* Smooth transition for all changes */
-  cursor: pointer; /* Indicating the button is clickable */
-  animation: breathe 3s infinite ease-in-out; /* Breathing animation for subtle shape changes */
+  border-radius: 8px; /* Angoli arrotondati per un aspetto più morbido */
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.2); /* Ombra leggera per l'effetto flottante */
+  transition: all 0.3s ease; /* Transizione morbida per tutte le modifiche */
+  cursor: pointer; /* Indica che il bottone è cliccabile */
+  font-weight: bold; /* Testo in grassetto per visibilità */
+  animation: glowing 1.5s infinite alternate; /* Animazione di ombra luccicante */
 }
 
 .cta-button:hover {
-  transform: scale(1.12); /* Smoothly enlarge the button on hover */
-  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.3); /* Deeper shadow for hover depth */
-  animation: pulse 1.5s infinite; /* Pulse effect when hovered */
+  transform: scale(1.05); /* Ingrandimento del bottone quando viene passato sopra */
+  box-shadow: 0px 12px 30px rgba(0, 0, 0, 0.3); /* Ombra più profonda per l'effetto hover */
 }
 
 .cta-button:active {
-  transform: scale(1.05); /* Slight shrink when clicked */
-  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.3); /* Reduced shadow on active click */
+  transform: scale(0.98); /* Rimpicciolimento del bottone quando cliccato */
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.3); /* Ombra ridotta durante il click */
+}
+
+/* Animazione ombra luccicante */
+@keyframes glowing {
+  0% {
+    box-shadow: 0px 0px 10px #8e44ad, 0px 0px 10px #8e44ad, 0px 0px 30px #8e44ad, 0px 0px 40px #37034e;
+  }
+  50% {
+    box-shadow: 0px 0px 20px #6c5ce7, 0px 0px 30px #6c5ce7, 0px 0px 50px #6c5ce7, 0px 0px 70px #6c5ce7;
+  }
+  100% {
+    box-shadow: 0px 0px 10px #8e44ad, 0px 0px 20px #8e44ad, 0px 0px 30px #8e44ad, 0px 0px 40px #8e44ad;
+  }
 }
 
 /* Pulse Animation for the hover effect */
