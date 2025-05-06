@@ -9,7 +9,7 @@ services:
       POSTGRESQL_PASSWORD: ${POSTGRESQL_PASSWORD}
       POSTGRESQL_POSTGRES_PASSWORD: ${POSTGRESQL_POSTGRES_PASSWORD}
     ports:
-      - "5432:5432"
+      - "127.0.0.1:5432:5432"
     volumes:
       - curriculumDb:/bitnami/postgresql
 
@@ -26,11 +26,13 @@ services:
       SPRING_DATASOURCE_PASSWORD: ${POSTGRESQL_PASSWORD}
 
   frontend:
-    image: curriculum_fe:2.0
+    image: curriculum-fe:1.0
     ports:
       - "8081:80"
     depends_on:
       - backend
+
+
 
 volumes:
  curriculumDb:
